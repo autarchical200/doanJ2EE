@@ -19,7 +19,7 @@ public class ProductModel {
 
         try {
             // Get the database connection
-            connection = DBConnection.getDbConnection();
+            connection = DBConnection.getConnection();
 
             // Prepare the SQL statement
             String sql = "SELECT * FROM products";
