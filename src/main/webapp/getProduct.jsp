@@ -4,7 +4,7 @@
 <%@ page import="pxu.edu.vn.dao.DBConnection" %>
 <%
 // Lấy kết nối tới CSDL
-if (DBConnection.getDbConnection() == null) {
+if (DBConnection.getConnection() == null) {
     // Chưa có kết nối tới CSDL nên phải khởi tạo
     String dbServer = application.getInitParameter("dbServer");
     String dbAddress = application.getInitParameter("dbAddress");
