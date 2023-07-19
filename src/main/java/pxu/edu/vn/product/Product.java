@@ -1,62 +1,65 @@
 package pxu.edu.vn.product;
 
+import java.util.Arrays;
+
 public class Product {
-	private int productID;
-	private String productName;
-	private int categoryID;
-	private int brandID;
+	private int product_id;
+	private String product_name;
+	private int category_id;
+	private int brand_id;
 	private double price;
-	private double discountedPrice;
-	private String productImg;
-	private String productInfo;
+	private double discounted_price;
+	private String product_image;
+	private String product_info;
 
 	public Product() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Product(int productID, String productName, int categoryID, int brandID, double price, double discountedPrice,
-			String productImg, String productInfo) {
+	public Product(int product_id, String product_name, int category_id, int brand_id, double price,
+			double discounted_price, String product_image, String product_info) {
 		super();
-		this.productID = productID;
-		this.productName = productName;
-		this.categoryID = categoryID;
-		this.brandID = brandID;
+		this.product_id = product_id;
+		this.product_name = product_name;
+		this.category_id = category_id;
+		this.brand_id = brand_id;
 		this.price = price;
-		this.discountedPrice = discountedPrice;
-		this.productImg = productImg;
-		this.productInfo = productInfo;
+		this.discounted_price = discounted_price;
+		this.product_image = product_image;
+		this.product_info = product_info;
 	}
 
-	public int getProductID() {
-		return productID;
+	public int getProduct_id() {
+		return product_id;
 	}
 
-	public void setProductID(int productID) {
-		this.productID = productID;
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
 
-	public String getProductName() {
-		return productName;
+	public String getProduct_name() {
+		return product_name;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 
-	public int getCategoryID() {
-		return categoryID;
+	public int getCategory_id() {
+		return category_id;
 	}
 
-	public void setCategoryID(int categoryID) {
-		this.categoryID = categoryID;
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
 
-	public int getBrandID() {
-		return brandID;
+	public int getBrand_id() {
+		return brand_id;
 	}
 
-	public void setBrandID(int brandID) {
-		this.brandID = brandID;
+	public void setBrand_id(int brand_id) {
+		this.brand_id = brand_id;
 	}
 
 	public double getPrice() {
@@ -67,35 +70,35 @@ public class Product {
 		this.price = price;
 	}
 
-	public double getDiscountedPrice() {
-		return discountedPrice;
+	public double getDiscounted_price() {
+		return discounted_price;
 	}
 
-	public void setDiscountedPrice(double discountedPrice) {
-		this.discountedPrice = discountedPrice;
+	public void setDiscounted_price(double discounted_price) {
+		this.discounted_price = discounted_price;
 	}
 
-	public String getProductImg() {
-		return productImg;
+	public String getProduct_image() {
+		return product_image;
 	}
 
-	public void setProductImg(String productImg) {
-		this.productImg = productImg;
+	public void setProduct_image(String product_image) {
+		this.product_image = product_image;
 	}
 
-	public String getProductInfo() {
-		return productInfo;
+	public String getProduct_info() {
+		return product_info;
 	}
 
-	public void setProductInfo(String productInfo) {
-		this.productInfo = productInfo;
+	public void setProduct_info(String product_info) {
+		this.product_info = product_info;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [productID=" + productID + ", productName=" + productName + ", categoryID=" + categoryID
-				+ ", brandID=" + brandID + ", price=" + price + ", discountedPrice=" + discountedPrice + ", productImg="
-				+ productImg + ", productInfo=" + productInfo + "]";
+		return "Product [product_id=" + product_id + ", product_name=" + product_name + ", category_id="
+				+ category_id + ", brand_id=" + brand_id + ", price=" + price + ", discounted_price=" + discounted_price
+				+ ", product_image=" + product_image + ", product_info=" + product_info + "]";
 	}
 
 }

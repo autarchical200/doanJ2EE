@@ -131,7 +131,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="Admin_index.jsp" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -148,19 +148,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="Admin_Brand.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Hãng Sản Phẩm</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="Admin_Category.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Loại Sản Phẩm</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="Admin_Product.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Sản phẩm</p>
                                     </a>
@@ -178,13 +178,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="Admin_Order.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Hóa Đơn</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="Admin_Order_detail.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Chi Tiết Hóa Đơn</p>
                                     </a>
@@ -193,7 +193,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="Admin_Customer.jsp" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản Lý Khách Hàng
@@ -202,7 +202,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="Admin_Employee.jsp" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Quản Lý Nhân Viên
@@ -211,7 +211,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="Admin_Invengory.jsp" class="nav-link">
                                 <i class="nav-icon fas fa-house"></i>
                                 <p>
                                     Quản Lý Kho

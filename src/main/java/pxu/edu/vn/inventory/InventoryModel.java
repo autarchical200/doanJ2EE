@@ -1,16 +1,17 @@
-package pxu.edu.vn.brand;
+package pxu.edu.vn.inventory;
 
 import java.sql.Connection;
-import java.sql.*;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import pxu.edu.vn.dao.DBConnection;
 
-public class brandModel {
-    public static ArrayList<brand> getAll() throws Exception {
-        ArrayList<brand> lst = new ArrayList<>();
+public class InventoryModel {
+    public static ArrayList<Inventory> getAll() throws Exception {
+        ArrayList<Inventory> lst = new ArrayList<>();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -18,15 +19,15 @@ public class brandModel {
         try {
             conn = DBConnection.getConnection();
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM brands";
+            String sql = "SELECT * FROM inventories";
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                brand Brand = new brand();
-                Brand.setBrand_id(rs.getInt(1));
-                Brand.setBrand_name(rs.getString(2));
-                Brand.setBrand_country(rs.getString(3));
-                Brand.setBrand_nsx(rs.getDate(4));
-                lst.add(Brand);
+                Inventory inventory = new Inventory();
+                inventory.setInventory_id(rs.getInt(1));
+                inventory.setProduct_id(rs.getInt(2));
+                inventory.setDate_add(rs.getDate(3));
+                inventory.setQuantity(rs.getInt(4));
+                lst.add(inventory);
             }
         } catch (SQLException e) {
             // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
@@ -52,15 +53,15 @@ public class brandModel {
     }
 
     // Hàm Thêm Dữ Liệu
-    public static void insertBrand(brand brand) throws Exception {
+    public static void insertInventory(Inventory inventory) throws Exception {
         Connection conn = null;
         Statement stmt = null;
 
         try {
             conn = DBConnection.getConnection();
             stmt = conn.createStatement();
-            String sql = "INSERT INTO brands (brand_name, brand_country, brand_nsx) VALUES ('"
-                    + brand.getBrand_name() + "', '" + brand.getBrand_country() + "', '" + brand.getBrand_nsx() + "')";
+            String sql = "INSERT inventories INTO inventory (product_id, date_add, quantity) VALUES (" + inventory.getProduct_id()
+                    + ", '" + inventory.getDate_add() + "', " + inventory.getQuantity() + ")";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
             // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
@@ -82,16 +83,16 @@ public class brandModel {
     }
 
     // Hàm Sửa Dữ Liệu
-    public static void updateBrand(brand brand) throws Exception {
+    public static void updateInventory(Inventory inventory) throws Exception {
         Connection conn = null;
         Statement stmt = null;
 
         try {
             conn = DBConnection.getConnection();
             stmt = conn.createStatement();
-            String sql = "UPDATE brands SET brand_name = '" + brand.getBrand_name() + "', brand_country = '"
-                    + brand.getBrand_country() + "', brand_nsx = '" + brand.getBrand_nsx() + "' WHERE brand_id = "
-                    + brand.getBrand_id();
+            String sql = "UPDATE inventories SET product_id = " + inventory.getProduct_id() + ", date_add = '"
+                    + inventory.getDate_add() + "', quantity = " + inventory.getQuantity() + " WHERE inventory_id = "
+                    + inventory.getInventory_id();
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
             // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
@@ -113,14 +114,14 @@ public class brandModel {
     }
 
     // Hàm Xóa
-    public static void deleteBrand(int brandId) throws Exception {
+    public static void deleteInventory(int inventoryId) throws Exception {
         Connection conn = null;
         Statement stmt = null;
 
         try {
             conn = DBConnection.getConnection();
             stmt = conn.createStatement();
-            String sql = "DELETE FROM brands WHERE brand_id = " + brandId;
+            String sql = "DELETE FROM inventories WHERE inventory_id = " + inventoryId;
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
             // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
@@ -140,48 +141,4 @@ public class brandModel {
             }
         }
     }
-    
-    public static brand getBrandById(int brandId) throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        brand brand = null; // Khởi tạo đối tượng brand trước khi sử dụng
-
-        try {
-            conn = DBConnection.getConnection();
-            String sql = "SELECT * FROM brands WHERE brand_id = ?";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, brandId);
-            rs = pstmt.executeQuery();
-            if (rs.next()) {
-                brand = new brand(); // Khởi tạo đối tượng brand
-                brand.setBrand_id(rs.getInt("brand_id"));
-                brand.setBrand_name(rs.getString("brand_name"));
-                brand.setBrand_country(rs.getString("brand_country"));
-                brand.setBrand_nsx(rs.getDate("brand_nsx"));
-            }
-        } catch (SQLException e) {
-            // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
-            throw new Exception("Lỗi khi lấy dữ liệu từ cơ sở dữ liệu", e);
-        } finally {
-            // Đảm bảo đóng kết nối và giải phóng tài nguyên sau khi sử dụng xong
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
-                throw new Exception("Lỗi khi đóng kết nối", ex);
-            }
-        }
-
-        return brand; // Trả về đối tượng brand
-    }
-
 }

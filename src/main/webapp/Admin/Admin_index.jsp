@@ -145,11 +145,11 @@
 										<p>Hãng Sản Phẩm</p>
 								</a></li>
 								<li class="nav-item"><a
-									href="" class="nav-link">
+									href="Admin_Category.jsp" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Loại Sản Phẩm</p>
 								</a></li>
-								<li class="nav-item"><a href="#"
+								<li class="nav-item"><a href="Admin_Product.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Sản Phẩm</p>
 								</a></li>
@@ -164,12 +164,12 @@
 								</p>
 						</a>
 							<ul class="nav nav-treeview">
-								<li class="nav-item"><a href="#"
+								<li class="nav-item"><a href="Admin_Oder.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Hóa Đơn</p>
 								</a></li>
 								<li class="nav-item"><a
-									href="#" class="nav-link">
+									href="Admin_Oder_detail.jsp" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Chi Tiết Hóa Đơn</p>
 								</a></li>
@@ -177,21 +177,21 @@
 
 							</ul></li>
 
-						<li class="nav-item"><a href="#" class="nav-link"> <i
+						<li class="nav-item"><a href="Admin_Customer.jsp" class="nav-link"> <i
 								class="nav-icon fas fa-users"></i>
 
 								<p>
 									Quản lý Khách Hàng</i>
 								</p>
 						</a></li>
-						<li class="nav-item"><a href="#" class="nav-link"> <i
+						<li class="nav-item"><a href="Admin_Employee.jsp" class="nav-link"> <i
 								class="nav-icon fa-solid fas fa-user"></i>
 
 								<p>
 									Quản lý Nhân Sự</i>
 								</p>
 						</a></li>
-						<li class="nav-item"><a href="#" class="nav-link"> <i
+						<li class="nav-item"><a href="Admin_Invengory.jsp" class="nav-link"> <i
 								class="nav-icon fas fa-house"></i>
 								<p>
 									Quản lý Kho</i>

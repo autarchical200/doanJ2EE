@@ -1,16 +1,17 @@
-package pxu.edu.vn.brand;
+package pxu.edu.vn.order;
 
 import java.sql.Connection;
-import java.sql.*;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import pxu.edu.vn.dao.DBConnection;
 
-public class brandModel {
-    public static ArrayList<brand> getAll() throws Exception {
-        ArrayList<brand> lst = new ArrayList<>();
+public class OrderModel {
+    public static ArrayList<Order> getAll() throws Exception {
+        ArrayList<Order> lst = new ArrayList<>();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -18,15 +19,15 @@ public class brandModel {
         try {
             conn = DBConnection.getConnection();
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM brands";
+            String sql = "SELECT * FROM orders";
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                brand Brand = new brand();
-                Brand.setBrand_id(rs.getInt(1));
-                Brand.setBrand_name(rs.getString(2));
-                Brand.setBrand_country(rs.getString(3));
-                Brand.setBrand_nsx(rs.getDate(4));
-                lst.add(Brand);
+                Order order = new Order();
+                order.setOrder_id(rs.getInt(1));
+                order.setUser_id(rs.getInt(2));
+                order.setOrder_date(rs.getDate(3));
+                order.setTotal_amount(rs.getDouble(4));
+                lst.add(order);
             }
         } catch (SQLException e) {
             // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
@@ -52,15 +53,15 @@ public class brandModel {
     }
 
     // Hàm Thêm Dữ Liệu
-    public static void insertBrand(brand brand) throws Exception {
+    public static void insertOrder(Order order) throws Exception {
         Connection conn = null;
         Statement stmt = null;
 
         try {
             conn = DBConnection.getConnection();
             stmt = conn.createStatement();
-            String sql = "INSERT INTO brands (brand_name, brand_country, brand_nsx) VALUES ('"
-                    + brand.getBrand_name() + "', '" + brand.getBrand_country() + "', '" + brand.getBrand_nsx() + "')";
+            String sql = "INSERT INTO orders (user_id, order_date, total_amount) VALUES (" + order.getUser_id() + ", '"
+                    + order.getOrder_date() + "', " + order.getTotal_amount() + ")";
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
             // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
@@ -82,16 +83,15 @@ public class brandModel {
     }
 
     // Hàm Sửa Dữ Liệu
-    public static void updateBrand(brand brand) throws Exception {
+    public static void updateOrder(Order order) throws Exception {
         Connection conn = null;
         Statement stmt = null;
 
         try {
             conn = DBConnection.getConnection();
             stmt = conn.createStatement();
-            String sql = "UPDATE brands SET brand_name = '" + brand.getBrand_name() + "', brand_country = '"
-                    + brand.getBrand_country() + "', brand_nsx = '" + brand.getBrand_nsx() + "' WHERE brand_id = "
-                    + brand.getBrand_id();
+            String sql = "UPDATE orders SET user_id = " + order.getUser_id() + ", order_date = '" + order.getOrder_date()
+                    + "', total_amount = " + order.getTotal_amount() + " WHERE order_id = " + order.getOrder_id();
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
             // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
@@ -113,14 +113,14 @@ public class brandModel {
     }
 
     // Hàm Xóa
-    public static void deleteBrand(int brandId) throws Exception {
+    public static void deleteOrder(int orderId) throws Exception {
         Connection conn = null;
         Statement stmt = null;
 
         try {
             conn = DBConnection.getConnection();
             stmt = conn.createStatement();
-            String sql = "DELETE FROM brands WHERE brand_id = " + brandId;
+            String sql = "DELETE FROM orders WHERE order_id = " + orderId;
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
             // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
@@ -141,47 +141,6 @@ public class brandModel {
         }
     }
     
-    public static brand getBrandById(int brandId) throws Exception {
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        brand brand = null; // Khởi tạo đối tượng brand trước khi sử dụng
-
-        try {
-            conn = DBConnection.getConnection();
-            String sql = "SELECT * FROM brands WHERE brand_id = ?";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, brandId);
-            rs = pstmt.executeQuery();
-            if (rs.next()) {
-                brand = new brand(); // Khởi tạo đối tượng brand
-                brand.setBrand_id(rs.getInt("brand_id"));
-                brand.setBrand_name(rs.getString("brand_name"));
-                brand.setBrand_country(rs.getString("brand_country"));
-                brand.setBrand_nsx(rs.getDate("brand_nsx"));
-            }
-        } catch (SQLException e) {
-            // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
-            throw new Exception("Lỗi khi lấy dữ liệu từ cơ sở dữ liệu", e);
-        } finally {
-            // Đảm bảo đóng kết nối và giải phóng tài nguyên sau khi sử dụng xong
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
-                throw new Exception("Lỗi khi đóng kết nối", ex);
-            }
-        }
-
-        return brand; // Trả về đối tượng brand
-    }
-
+    
+    
 }
