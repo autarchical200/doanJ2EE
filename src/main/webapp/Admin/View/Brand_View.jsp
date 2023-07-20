@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="pxu.edu.vn.brand.brandModel"%>
 <%@page import="pxu.edu.vn.brand.brand"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -59,38 +60,18 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%
-									try {
-										// Gọi phương thức getAll() từ lớp DAO để lấy danh sách các brand
-										List<brand> lstBrands = brandModel.getAll();
-
-										// Duyệt và hiển thị dữ liệu lên bảng
-										for (brand brand : lstBrands) {
-									%>
-									<tr>
-										<td><%=brand.getBrand_id()%></td>
-										<td><%=brand.getBrand_name()%></td>
-										<td><%=brand.getBrand_country()%></td>
-										<td><%=brand.getBrand_nsx()%></td>
-										<td>
-											<button type="button" class="btn btn-primary"
-												data-toggle="modal" data-target="#exampleModal">
-												<i class="fa-solid fa-pen-to-square"></i>
-											</button>
-										</td>
-										<td>
-											<button type="button" class="btn btn-danger">
-												<i class="fa-solid fa-trash"></i>
-											</button>
-										</td>
 									</tr>
-									<%
-									}
-									} catch (Exception e) {
-									e.printStackTrace();
-									// Xử lý lỗi ở đây nếu cần thiết
-									}
-									%>
+							        <%-- Lấy danh sách hãng sản phẩm từ request --%>
+							        <% ArrayList<brand> brandList = (ArrayList<brand>) request.getAttribute("brandList"); %>
+							        <%-- Lặp qua danh sách hãng sản phẩm và hiển thị thông tin --%>
+							        <% for (brand Brand : brandList) { %>
+							            <tr>
+							                <td><%= Brand.getBrand_id() %></td>
+							                <td><%= Brand.getBrand_name() %></td>
+							                <td><%= Brand.getBrand_country() %></td>
+							                <td><%= Brand.getBrand_nsx() %></td>
+							            </tr>
+							        <% } %>
 								</tbody>
 							</table>
 						</div>

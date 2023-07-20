@@ -8,12 +8,12 @@
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome Icons -->
 <link rel="stylesheet"
-	href="../plugins/fontawesome-free/css/all.min.css">
+	href="../../plugins/fontawesome-free/css/all.min.css">
 <!-- overlayScrollbars -->
 <link rel="stylesheet"
-	href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+	href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 <!-- Theme style -->
-<link rel="stylesheet" href="../dist/css/adminlte.min.css">
+<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -27,7 +27,7 @@
 		<!-- Preloader -->
 		<div
 			class="preloader flex-column justify-content-center align-items-center">
-			<img class="animation__wobble" src="../dist/img/AdminLTELogo.png"
+			<img class="animation__wobble" src="../../dist/img/AdminLTELogo.png"
 				alt="AdminLTELogo" height="60" width="60">
 		</div>
 
@@ -93,7 +93,7 @@
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
 			<a href="#" class="brand-link"> <img
-				src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+				src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
 				class="brand-image img-circle elevation-3" style="opacity: .8">
 				<span class="brand-text font-weight-light">AdminLTE 3</span>
 			</a>
@@ -103,7 +103,7 @@
 				<!-- Sidebar user panel (optional) -->
 				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 					<div class="image">
-						<img src="../dist/img/user2-160x160.jpg"
+						<img src="../../dist/img/user2-160x160.jpg"
 							class="img-circle elevation-2" alt="User Image">
 					</div>
 					<div class="info">
@@ -140,7 +140,7 @@
 								</p>
 						</a>
 							<ul class="nav nav-treeview">
-								<li class="nav-item"><a href="Admin_Brand.jsp"
+								<li class="nav-item"><a href="Brand_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Hãng Sản Phẩm</p>
 								</a></li>
@@ -149,7 +149,7 @@
 										<i class="far fa-circle nav-icon"></i>
 										<p>Loại Sản Phẩm</p>
 								</a></li>
-								<li class="nav-item"><a href="Admin_Product.jsp"
+								<li class="nav-item"><a href="Product_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Sản Phẩm</p>
 								</a></li>
@@ -164,12 +164,12 @@
 								</p>
 						</a>
 							<ul class="nav nav-treeview">
-								<li class="nav-item"><a href="Admin_Oder.jsp"
+								<li class="nav-item"><a href="Oder_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Hóa Đơn</p>
 								</a></li>
 								<li class="nav-item"><a
-									href="Admin_Oder_detail.jsp" class="nav-link">
+									href="Oder_detail_View.jsp" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Chi Tiết Hóa Đơn</p>
 								</a></li>
@@ -177,21 +177,21 @@
 
 							</ul></li>
 
-						<li class="nav-item"><a href="Admin_Customer.jsp" class="nav-link"> <i
+						<li class="nav-item"><a href="Customer_View.jsp" class="nav-link"> <i
 								class="nav-icon fas fa-users"></i>
 
 								<p>
 									Quản lý Khách Hàng</i>
 								</p>
 						</a></li>
-						<li class="nav-item"><a href="Admin_Employee.jsp" class="nav-link"> <i
+						<li class="nav-item"><a href="Employee_View.jsp" class="nav-link"> <i
 								class="nav-icon fa-solid fas fa-user"></i>
 
 								<p>
 									Quản lý Nhân Sự</i>
 								</p>
 						</a></li>
-						<li class="nav-item"><a href="Admin_Invengory.jsp" class="nav-link"> <i
+						<li class="nav-item"><a href="Invengory_View.jsp" class="nav-link"> <i
 								class="nav-icon fas fa-house"></i>
 								<p>
 									Quản lý Kho</i>
@@ -432,24 +432,24 @@
 
 	<!-- REQUIRED SCRIPTS -->
 	<!-- jQuery -->
-	<script src="../plugins/jquery/jquery.min.js"></script>
+	<script src="../../plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap -->
-	<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- overlayScrollbars -->
 	<script
-		src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+		src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 	<!-- AdminLTE App -->
-	<script src="../dist/js/adminlte.js"></script>
+	<script src="../../dist/js/adminlte.js"></script>
 	<!-- PAGE PLUGINS -->
 	<!-- jQuery Mapael -->
-	<script src="../plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+	<script src="../../plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
 	<script src="../plugins/raphael/raphael.min.js"></script>
-	<script src="../plugins/jquery-mapael/jquery.mapael.min.js"></script>
-	<script src="../plugins/jquery-mapael/maps/usa_states.min.js"></script>
+	<script src="../../plugins/jquery-mapael/jquery.mapael.min.js"></script>
+	<script src="../../plugins/jquery-mapael/maps/usa_states.min.js"></script>
 	<!-- ChartJS -->
-	<script src="../plugins/chart.js/Chart.min.js"></script>
+	<script src="../../plugins/chart.js/Chart.min.js"></script>
 
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="../dist/js/pages/dashboard2.js"></script>
+	<script src="../../dist/js/pages/dashboard2.js"></script>
 </body>
 </html>

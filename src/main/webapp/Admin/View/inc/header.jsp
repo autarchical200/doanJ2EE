@@ -11,13 +11,13 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css" />
     <!-- DataTables -->
-    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" />
-    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />
-    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />
     <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     
@@ -97,7 +97,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
+                <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
 
@@ -106,7 +106,7 @@
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
+                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Alexander Pierce</a>
@@ -131,7 +131,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="Admin_index.jsp" class="nav-link">
+                            <a href="Admin_index_View.jsp" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -148,19 +148,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="Admin_Brand.jsp" class="nav-link">
+                                    <a href="Brand_View.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Hãng Sản Phẩm</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Admin_Category.jsp" class="nav-link">
+                                    <a href="Category_View.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Loại Sản Phẩm</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Admin_Product.jsp" class="nav-link">
+                                    <a href="Product_View.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Sản phẩm</p>
                                     </a>
@@ -178,13 +178,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="Admin_Order.jsp" class="nav-link">
+                                    <a href="Order_View.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Hóa Đơn</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="Admin_Order_detail.jsp" class="nav-link">
+                                    <a href="Order_detail_View.jsp" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Chi Tiết Hóa Đơn</p>
                                     </a>
@@ -193,7 +193,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="Admin_Customer.jsp" class="nav-link">
+                            <a href="Customer_View.jsp" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Quản Lý Khách Hàng
@@ -202,7 +202,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="Admin_Employee.jsp" class="nav-link">
+                            <a href="Employee_View.jsp" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Quản Lý Nhân Viên
@@ -211,7 +211,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="Admin_Invengory.jsp" class="nav-link">
+                            <a href="Invengory_View.jsp" class="nav-link">
                                 <i class="nav-icon fas fa-house"></i>
                                 <p>
                                     Quản Lý Kho
