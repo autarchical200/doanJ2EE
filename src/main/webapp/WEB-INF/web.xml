@@ -32,4 +32,12 @@
 		<param-name>dbDriver</param-name>
 		<param-value>com.cj.mysql.jdbc.Driver</param-value>
 	</context-param>
+	  <servlet>
+        <servlet-name>ProductControllerServlet</servlet-name>
+        <servlet-class>pxu.edu.vn.ProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductControllerServlet</servlet-name>
+        <url-pattern>/ProductController</url-pattern>
+    </servlet-mapping>
 </web-app>
