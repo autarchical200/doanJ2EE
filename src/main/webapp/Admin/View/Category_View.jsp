@@ -1,5 +1,4 @@
-<%@page import="pxu.edu.vn.category.CategoryModel"%>
-<%@page import="pxu.edu.vn.category.Category"%>
+<%@page import="pxu.edu.vn.category.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -90,10 +89,10 @@
 																		}
 																	},
 																	{
-																		"data" : "category_id"
+																		"data" : "categoryID"
 																	},
 																	{
-																		"data" : "category_name"
+																		"data" : "categoryName"
 																	},
 																	
 																	{

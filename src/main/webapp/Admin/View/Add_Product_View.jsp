@@ -132,8 +132,8 @@
 											categories,
 											function(index, category) {
 												categorySelect
-														.append('<option value="' + category.category_id + '">'
-																+ category.category_name
+														.append('<option value="' + category.categoryID + '">'
+																+ category.categoryName
 																+ '</option>');
 											});
 						}
