@@ -1,39 +1,38 @@
 package pxu.edu.vn.category;
 
 public class Category {
-	private int category_id;
-	private String category_name;
+	private int categoryID;
+	private String categoryName;
 
 	public Category() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Category(int category_id, String category_name) {
+
+	public Category(int categoryID, String categoryName) {
 		super();
-		this.category_id = category_id;
-		this.category_name = category_name;
+		this.categoryID = categoryID;
+		this.categoryName = categoryName;
 	}
 
-
-	public  int getCategory_id() {
-		return category_id;
+	public int getCategoryID() {
+		return categoryID;
 	}
 
-	public void setCategory_id(int category_id) {
-		this.category_id = category_id;
+	public void setCategoryID(int categoryID) {
+		this.categoryID = categoryID;
 	}
 
-	public String getCategory_name() {
-		return category_name;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	@Override
 	public String toString() {
-		return "category [category_id=" + category_id + ", category_name=" + category_name + "]";
+		return "Category [categoryID=" + categoryID + ", categoryName=" + categoryName + "]";
 	}
 
 }

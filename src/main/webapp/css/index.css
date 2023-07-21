@@ -142,7 +142,7 @@ header .menu .menu__toggler {
 }
 
  .product__show .card .card-img-top {
-    max-width: 300px;
+    max-width: 250px;
     max-height: auto;
     display: flex;
     justify-content: center;
