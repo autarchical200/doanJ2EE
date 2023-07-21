@@ -1,4 +1,4 @@
-<%@page import="pxu.edu.vn.category.categoryModel"%>
+<%@page import="pxu.edu.vn.category.CategoryModel"%>
 <%@page import="pxu.edu.vn.category.Category"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

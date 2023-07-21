@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="pxu.edu.vn.product.Product, pxu.edu.vn.product.ProductModel,pxu.edu.vn.category.Category,pxu.edu.vn.category.CategoryModel,java.util.*,com.google.gson.Gson"%>
+<%@ page import="pxu.edu.vn.product.Product, pxu.edu.vn.product.ProductModel, pxu.edu.vn.category.Category, pxu.edu.vn.category.CategoryModel, java.util.*, com.google.gson.Gson"%>
 
 <%
-int categoryID = Integer.parseInt(request.getParameter("categoryID"));
+    int categoryID = Integer.parseInt(request.getParameter("categoryID"));
     // Lấy categoryID từ tham số truyền vào
 
     // Lấy danh sách danh mục từ CategoryModel

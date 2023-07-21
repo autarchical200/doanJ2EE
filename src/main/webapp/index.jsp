@@ -12,7 +12,6 @@
             }
             // Nếu role khác admin hoặc customer thì xử lý trường hợp khác (nếu cần)
         }
-        
     } 
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
