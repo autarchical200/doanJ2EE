@@ -24,22 +24,6 @@ if (session.getAttribute("username") != null) {
 <%@page import="java.sql.Statement"%>
 
 
-<%
-// Kiểm tra session, nếu đã tồn tại user thì kiểm tra role và điều hướng trang
-if (session.getAttribute("username") != null) {
-	String role = (String) session.getAttribute("role");
-	if (role != null) {
-		if (role.equals("customer")) {
-	// Điều hướng đến trang admin
-	response.sendRedirect("../user/userView.jsp");
-		}
-
-	}
-} else {
-	// Nếu không tồn tại user, đưa về trang login
-	response.sendRedirect("../login/loginView.jsp");
-}
-%>
 
 
 
