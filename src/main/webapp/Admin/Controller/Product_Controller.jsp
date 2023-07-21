@@ -1,5 +1,5 @@
-<%@page import="pxu.edu.vn.category.categoryModel"%>
-<%@page import="pxu.edu.vn.category.category"%>
+<%@page import="pxu.edu.vn.category.CategoryModel"%>
+<%@page import="pxu.edu.vn.category.Category"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,48 +12,39 @@
 <%
 // Lấy danh sách sản phẩm từ model
 List<Product> products = ProductModel.getAll();
-
 // Lấy danh sách hãng sản phẩm từ model (để lấy thông tin tên hãng)
 List<brand> brands = brandModel.getAll();
 Map<Integer, String> brandMap = new HashMap<>(); // Sử dụng Map để ánh xạ brand_id với tên hãng
-
 // Tạo brandMap từ danh sách hãng
 for (brand b : brands) {
 	brandMap.put(b.getBrand_id(), b.getBrand_name());
 }
-
 // Gán tên hãng vào từng sản phẩm
 for (Product p : products) {
 	int brandId = p.getBrand_id();
 	String brandName = brandMap.get(brandId);
 	p.setBrand_name(brandName);
 }
-
 // Lấy danh sách danh mục sản phẩm từ model (để lấy thông tin tên danh mục)
-List<category> categories = categoryModel.getAll();
+List<Category> categories = CategoryModel.getAll();
 Map<Integer, String> categoryMap = new HashMap<>(); // Sử dụng Map để ánh xạ category_id với tên danh mục
-
 // Tạo categoryMap từ danh sách danh mục
-for (category c : categories) {
+for (Category c : categories) {
 	categoryMap.put(c.getCategory_id(), c.getCategory_name());
 }
-
 // Gán tên danh mục vào từng sản phẩm
 for (Product p : products) {
 	int categoryId = p.getCategory_id();
 	String categoryName = categoryMap.get(categoryId);
 	p.setCategory_name(categoryName);
 }
-
 // Convert danh sách sản phẩm thành JSON
 Gson gson = new Gson();
 String json = gson.toJson(products);
-
 // Trả về JSON
 response.setContentType("application/json");
 response.setCharacterEncoding("UTF-8");
 response.getWriter().write(json);
-
 if (request.getParameter("action") != null) {
 	String action = request.getParameter("action");
 	if (action.equals("edit")) {
@@ -62,7 +53,6 @@ if (request.getParameter("action") != null) {
 		Product existingProduct = ProductModel.getProductById(id);
 		// Kiểm tra xem người dùng đã tải lên ảnh mới hay chưa
 		String imagePart = request.getParameter("image");
-
 		String imagePath;
 		if (imagePart != null && !imagePart.isEmpty()) {
 	// Nếu có tải lên ảnh mới, lưu ảnh vào thư mục tùy chỉnh và cập nhật đường dẫn ảnh mới
@@ -72,7 +62,6 @@ if (request.getParameter("action") != null) {
 	// Nếu không có ảnh mới, giữ nguyên đường dẫn ảnh ban đầu từ đối tượng sản phẩm hiện tại
 	imagePath = existingProduct.getProduct_image();
 		}
-
 		// Lấy các thông tin khác từ form
 		int idd = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
@@ -81,15 +70,12 @@ if (request.getParameter("action") != null) {
 		double price = Double.parseDouble(request.getParameter("price"));
 		double discountedPrice = Double.parseDouble(request.getParameter("discounted"));
 		String info = request.getParameter("info");
-
 		// Tạo đối tượng sản phẩm và cập nhật vào cơ sở dữ liệu
 		Product product = new Product(idd, name, categoryId, brandId, price, discountedPrice, imagePath, info);
 		ProductModel productService = new ProductModel();
 		productService.updateProduct(product);
-
 		// Chuyển hướng về trang hiển thị danh sách sản phẩm sau khi cập nhật thành công
 		response.sendRedirect("../View/Product_View.jsp");
-
 	} else if (action.equals("add")) {
 		String name = request.getParameter("name");
 		int categoryId = Integer.parseInt(request.getParameter("category"));
@@ -98,11 +84,9 @@ if (request.getParameter("action") != null) {
 		double discountedPrice = Double.parseDouble(request.getParameter("discounted"));
 		String imagePart = request.getParameter("image");
 		String info = request.getParameter("info");
-
 		// Lưu hình ảnh vào thư mục tùy chỉnh, ví dụ: /path/to/your/images
 		String imagePath = "../../public/img/products/" + imagePart;
 		// Tạo đối tượng sản phẩm và lưu vào cơ sở dữ liệu
-
 		Product newProduct = new Product();
 		newProduct.setProduct_name(name);
 		newProduct.setCategory_id(categoryId);
@@ -111,10 +95,8 @@ if (request.getParameter("action") != null) {
 		newProduct.setDiscounted_price(discountedPrice);
 		newProduct.setProduct_image(imagePath);
 		newProduct.setProduct_info(info);
-
 		// Thêm sản phẩm
 		ProductModel.insertProduct(newProduct);
-
 		// Chuyển hướng về trang hiển thị danh sách sản phẩm sau khi thêm thành công
 		response.sendRedirect("../View/Product_View.jsp");
 	} else if (action.equals("delete")) {
@@ -124,7 +106,6 @@ if (request.getParameter("action") != null) {
 		int id = Integer.parseInt(productId);
 		ProductModel.deleteProduct(id);
 		response.sendRedirect("../View/Product_View.jsp");
-
 	}
 		}
 	}

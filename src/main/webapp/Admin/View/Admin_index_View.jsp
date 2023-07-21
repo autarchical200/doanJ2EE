@@ -1,9 +1,27 @@
-<<<<<<< HEAD:src/main/webapp/Admin/View/Admin_index_View.jsp
+
+<%
+ // Kiểm tra session, nếu đã tồn tại user thì kiểm tra role và điều hướng trang
+ if (session.getAttribute("username") != null) {
+ 	String role = (String) session.getAttribute("role");
+ 	if (role != null) {
+ 		if (role.equals("customer")) {
+ 	// Điều hướng đến trang admin
+ 	response.sendRedirect("../../user/userView.jsp");
+ 		}
+
+ 	}
+ } else {
+ 	// Nếu không tồn tại user, đưa về trang login
+ 	response.sendRedirect("../../login/loginView.jsp");
+ }
+ %>
+
+
 <%@page import="org.json.JSONObject"%>
 <%@page import="org.json.JSONArray"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Statement"%>
-=======
+
 
 <%
 // Kiểm tra session, nếu đã tồn tại user thì kiểm tra role và điều hướng trang
@@ -21,7 +39,8 @@ if (session.getAttribute("username") != null) {
 	response.sendRedirect("../login/loginView.jsp");
 }
 %>
->>>>>>> Hung:src/main/webapp/Admin/Admin_index.jsp
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.google.gson.Gson"%>
@@ -176,24 +195,38 @@ if (session.getAttribute("username") != null) {
 								<li class="nav-item"><a href="Brand_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Hãng Sản Phẩm</p>
+
 								</a></li>
-<<<<<<< HEAD:src/main/webapp/Admin/View/Admin_index_View.jsp
 								<li class="nav-item"><a href="Admin_Category.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
-										<p>Loại Sản Phẩm</p>
+								</a></li> <<<<<<< HEAD:src/main/webapp/Admin/Admin_index.jsp
+								<li class="nav-item"><a href="" class="nav-link"> <i
+										class="far fa-circle nav-icon"></i><p>Loại Sản Phẩm</p>
 								</a></li>
 								<li class="nav-item"><a href="Product_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
-=======
 								<li class="nav-item"><a href="" class="nav-link"> <i
 										class="far fa-circle nav-icon"></i>
 										<p>Loại Sản Phẩm</p>
 								</a></li>
 								<li class="nav-item"><a href="#" class="nav-link"> <i
 										class="far fa-circle nav-icon"></i>
->>>>>>> Hung:src/main/webapp/Admin/Admin_index.jsp
 										<p>Sản Phẩm</p>
 								</a></li>
+
+
+								<li class="nav-item"><a href="#" class="nav-link"> <i
+										class="far fa-circle nav-icon"></i> =======
+										<li class="nav-item"><a href="Admin_Category.jsp"
+											class="nav-link"> <i class="far fa-circle nav-icon"></i>
+												<p>Loại Sản Phẩm</p>
+										</a></li>
+										<li class="nav-item"><a href="Product_View.jsp"
+											class="nav-link"> <i class="far fa-circle nav-icon"></i>
+												>>>>>>>
+												master:src/main/webapp/Admin/View/Admin_index_View.jsp
+												<p>Sản Phẩm</p>
+										</a></li>
 
 							</ul></li>
 
@@ -205,24 +238,42 @@ if (session.getAttribute("username") != null) {
 								</p>
 						</a>
 							<ul class="nav nav-treeview">
-<<<<<<< HEAD:src/main/webapp/Admin/View/Admin_index_View.jsp
+
 								<li class="nav-item"><a href="Oder_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+
+								<<<<<<< HEAD:src/main/webapp/Admin/Admin_index.jsp
+								<li class="nav-item"><a href="#" class="nav-link"> <i
+										class="far fa-circle nav-icon"></i>
+
 										<p>Hóa Đơn</p>
 								</a></li>
-								<li class="nav-item"><a href="Oder_detail_View.jsp"
+					<li class="nav-item"><a href="Oder_detail_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
-=======
+
 								<li class="nav-item"><a href="#" class="nav-link"> <i
 										class="far fa-circle nav-icon"></i>
 										<p>Hóa Đơn</p>
 								</a></li>
 								<li class="nav-item"><a href="#" class="nav-link"> <i
 										class="far fa-circle nav-icon"></i>
->>>>>>> Hung:src/main/webapp/Admin/Admin_index.jsp
+
 										<p>Chi Tiết Hóa Đơn</p>
 								</a></li>
 
+
+								<li class="nav-item"><a href="#" class="nav-link"> <i
+										class="far fa-circle nav-icon"></i> =======
+										<li class="nav-item"><a href="Oder_View.jsp"
+											class="nav-link"> <i class="far fa-circle nav-icon"></i>
+												<p>Hóa Đơn</p>
+										</a></li>
+										<li class="nav-item"><a href="Oder_detail_View.jsp"
+											class="nav-link"> <i class="far fa-circle nav-icon"></i>
+												>>>>>>>
+												master:src/main/webapp/Admin/View/Admin_index_View.jsp
+												<p>Chi Tiết Hóa Đơn</p>
+										</a></li>
 
 							</ul></li>
 
@@ -255,7 +306,11 @@ if (session.getAttribute("username") != null) {
 							<p></p>
 						</li>
 						<li class="nav-item"><a href="#" class="nav-link"> <a
+
 								href="../logout.jsp"> <i
+
+								href="../../logout.jsp"> <i
+
 									class="nav-icon fa-sharp fa-solid fa-right-from-bracket"></i>Đăng
 									Xuất
 							</a></li>
@@ -698,7 +753,8 @@ if (session.getAttribute("username") != null) {
 
 	<script>
 		var chartData =
-	<%=chartData%>;
+	<%=chartData%>
+		;
 		var labels = [];
 		var values = [];
 		chartData.forEach(function(data) {

@@ -28,7 +28,7 @@
 
                 // Kiểm tra vai trò của người dùng và điều hướng tới các trang phù hợp
                 if (rs.getString("role").equals("admin")) {
-                    response.sendRedirect("../Admin/Admin_index.jsp");
+                    response.sendRedirect("../Admin/View/Admin_index_View.jsp");
                 } else if (rs.getString("role").equals("customer")) {
                     response.sendRedirect("../user/userView.jsp");
                 }

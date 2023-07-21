@@ -63,7 +63,6 @@
 					function() {
 						var brandMap = {};
 						var categoryMap = {};
-
 						$
 								.ajax({
 									url : "../Controller/Product_Controller.jsp",
@@ -75,7 +74,6 @@
 											brandMap[product.brand_id] = product.brand_name;
 											categoryMap[product.category_id] = product.category_name;
 										}
-
 										var productTable = $("#productTable")
 												.DataTable(
 														{
@@ -161,7 +159,6 @@
 										console.log(textStatus, errorThrown);
 									},
 								});
-
 					});
 </script>
 

@@ -49,7 +49,7 @@
 
                                         // Duyệt và hiển thị dữ liệu lên bảng
                                         for (Order_Detail orderDetail : lstOrderDetails) {
-                                            Product product = ProductModel.getProductById(orderDetail.getProduct_id());
+                                            Product product = ProductModel.getProductById(String.valueOf(orderDetail.getProduct_id()));
                                     %>
                                     <tr>
                                         <td><%=orderDetail.getOrder_detail_id()%></td>

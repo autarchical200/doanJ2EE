@@ -60,7 +60,7 @@ if (request.getParameter("action") != null) {
 	e.printStackTrace();
 		}
 
-		brand editBrand = brandModel.getBrandById(brandId);
+		brand editBrand = brandModel.getBrandById(String.valueOf(brandId));
 		editBrand.setBrand_name(brandName);
 		editBrand.setBrand_country(brandCountry);
 		editBrand.setBrand_nsx(brandNsx);

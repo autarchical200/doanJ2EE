@@ -4,7 +4,7 @@
 	<%@ page import="java.util.ArrayList"%>
 	<%@ page import="java.util.List"%>
 	<%@ page import="pxu.edu.vn.product.Product"%>
-	<%@ page import="pxu.edu.vn.category.category"%>
+	<%@ page import="pxu.edu.vn.category.Category"%>
 	<%@ page import="pxu.edu.vn.brand.*"%>
 	<%@ page import="pxu.edu.vn.product.*"%>
 	
@@ -39,7 +39,7 @@
 							<%
 							String productId = request.getParameter("product_id");
 							if (productId != null) {
-								Product product = ProductModel.getProductById(productId);
+								Product product = ProductModel.getProductById(productId.toString());
 								if (product != null) {
 							%>
 							<form id="updateForm" method="get" enctype="multipart/form-data" action="../Controller/Product_Controller.jsp">

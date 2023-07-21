@@ -1,15 +1,24 @@
 eclipse.preferences.version=1
 <<<<<<< HEAD
+encoding//src/main/webapp/banner/footer.jsp=UTF-8
+encoding//src/main/webapp/banner/header.jsp=UTF-8
+encoding//src/main/webapp/index.jsp=UTF-8
+encoding//src/main/webapp/logout.jsp=UTF-8
+=======
 <<<<<<< HEAD
 encoding//src/main/webapp/product.jsp=UTF-8
 =======
 encoding//src/main/webapp/Admin/Controller/Product_Controller.jsp=UTF-8
 encoding//src/main/webapp/Admin/View/inc/footer.jsp=UTF-8
 >>>>>>> d6403daddb7940945b3ca88d722fde31118845c9
+<<<<<<< HEAD
 =======
 encoding//src/main/webapp/banner/footer.jsp=UTF-8
 encoding//src/main/webapp/banner/header.jsp=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
 encoding//src/main/webapp/logout.jsp=UTF-8
 >>>>>>> Hung
+=======
+>>>>>>> master
+>>>>>>> refs/remotes/origin/Hung
 encoding/<project>=UTF-8
