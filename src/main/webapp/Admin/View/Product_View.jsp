@@ -23,7 +23,7 @@
 							<div class="row justify-content-center">
 								<a href="Add_Product_View.jsp">
 									<button class="btn btn-primary">
-										<i class="fa-sharp fa-solid fa-plus"></i> Thêm Hãng Sản Phẩm
+										<i class="fa-sharp fa-solid fa-plus"></i> Thêm Sản Phẩm
 									</button>
 								</a>
 							</div>
@@ -121,7 +121,7 @@
 																				type,
 																				full,
 																				meta) {
-																			return '<img src="' + full.product_image + '" alt="Hình ảnh sản phẩm" style="max-width: 100px; max-height: 100px;">';
+																			return '<img src="../../img/products/' + full.product_image + '" alt="Hình ảnh sản phẩm" style="max-width: 100px; max-height: 100px;">';
 																		},
 																	},
 																	{

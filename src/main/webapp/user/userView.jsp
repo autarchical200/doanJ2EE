@@ -70,9 +70,22 @@
                         products.forEach(function (product) {
                             var card = '<div class="col-md-6 col-lg-3 mt-4">' +
                                     '<div class="card">' +
+                                    '<form action="../product_detailView.jsp" method="post">' + // Đổi thành phương thức POST và sử dụng form
+                                    '<input type="hidden" name="img" value="' + encodeURIComponent("../img/products/" + product.product_image) + '">' +
+                                    '<input type="hidden" name="name" value="' + encodeURIComponent(product.product_name) + '">' +
+                                    '<input type="hidden" name="info" value="' + encodeURIComponent(product.product_info) + '">' +
+                                    '<input type="hidden" name="price" value="' + encodeURIComponent(product.price) + '">' +
+                                    '<input type="hidden" name="discountedPrice" value="' + encodeURIComponent(product.discounted_price) + '">' +
+                                    '<a href="javascript:;" onclick="this.parentNode.submit(); return false;">' +
                                     '<img src="../img/products/' + product.product_image + '" class="card-img-top" alt="Product Image">' +
+                                    '</a>' +
+                                    '</form>' +
                                     '<div class="card-body">' +
-                                    '<h5 class="card-title">' + product.product_name + '</h5>' +
+                                    '<h5 class="card-title">' +
+                                    '<a href="javascript:;" onclick="this.parentNode.submit(); return false;">' + // Gọi hàm submit form khi click vào link
+                                    product.product_name +
+                                    '</a>' +
+                                    '</h5>' +
                                     '<p class="card-text">' + product.product_info + '</p>' +
                                     '<div class="d-flex">';
                             if (product.discounted_price > 0) {
@@ -80,7 +93,7 @@
                             }
                             card += '<p class="product_price">' + product.price + '</p>' +
                                     '</div>' +
-                                    '<a href="#" class="btn btn-primary">Mua hàng</a>' +
+                                    '<a href="javascript:;" onclick="this.parentNode.submit(); return false;" class="btn btn-primary">Xem chi tiết</a>' +
                                     '</div>' +
                                     '</div>' +
                                     '</div>';
