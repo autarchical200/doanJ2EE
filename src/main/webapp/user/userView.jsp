@@ -5,7 +5,7 @@
         if (role != null) {
             if (role.equals("admin")) {
                 // Điều hướng đến trang admin
-                response.sendRedirect("../Admin/Admin_index.jsp");
+                response.sendRedirect("../Admin/View/Admin_index_View.jsp");
             } 
             // Nếu role khác admin hoặc customer thì xử lý trường hợp khác (nếu cần)
         }

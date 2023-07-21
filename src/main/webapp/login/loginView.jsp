@@ -6,7 +6,7 @@ if (session.getAttribute("username") != null) {
 	if (role != null) {
 		if (role.equals("admin")) {
 	// Điều hướng đến trang admin
-	response.sendRedirect("../Admin/Admin_index.jsp");
+	response.sendRedirect("../Admin/View/Admin_index_View.jsp");
 		} else if (role.equals("customer")) {
 	// Điều hướng đến trang người dùng
 	response.sendRedirect("../user/userView.jsp");

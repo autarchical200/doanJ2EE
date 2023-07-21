@@ -1,6 +1,5 @@
 
 <%
-
     // Huỷ session
     session.invalidate();
 
