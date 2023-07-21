@@ -18,7 +18,6 @@ if (session.getAttribute("username") != null) {
 
 
 
-
 <%@page import="org.json.JSONObject"%>
 <%@page import="org.json.JSONArray"%>
 <%@page import="java.util.ArrayList"%>
@@ -162,8 +161,19 @@ if (session.getAttribute("username") != null) {
 							class="img-circle elevation-2" alt="User Image">
 					</div>
 					<div class="info">
-						<a href="#" class="d-block">ADMIN DỤNG</a>
+						<%
+						String username = (String) session.getAttribute("username");
+						boolean isLoggedIn = (username != null);
+						if (isLoggedIn) {
+						%>
+						<a href="#" class="d-block">Chào <%=username%>!
+						</a>
+
+						<%
+						}
+						%>
 					</div>
+
 				</div>
 				<!-- SidebarSearch Form -->
 				<div class="form-inline">
@@ -187,9 +197,8 @@ if (session.getAttribute("username") != null) {
 								class="nav-icon fas fa-tachometer-alt"></i>
 								<p>Dashboard</p>
 						</a></li>
-
 						<li class="nav-item"><a href="#" class="nav-link"> <i
-								class=" nav-icon fa-solid fa-laptop"></i>
+								class="nav-icon fa-solid fa-laptop"></i>
 								<p>
 									Quản lý Sản Phẩm <i class="fas fa-angle-left right"></i>
 								</p>
@@ -198,161 +207,58 @@ if (session.getAttribute("username") != null) {
 								<li class="nav-item"><a href="Brand_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Hãng Sản Phẩm</p>
-
-
 								</a></li>
 								<li class="nav-item"><a href="Admin_Category.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
-								</a></li> <<<<<<< HEAD:src/main/webapp/Admin/Admin_index.jsp
-								<li class="nav-item"><a href="" class="nav-link"> <i
-										class="far fa-circle nav-icon"></i>
-									<p>Loại Sản Phẩm</p>
-
-								</a></li> <<<<<<< HEAD:src/main/webapp/Admin/Admin_index.jsp
-								<li class="nav-item"><a href="" class="nav-link"> <i
-										class="far fa-circle nav-icon"></i>
 										<p>Loại Sản Phẩm</p>
-
 								</a></li>
 								<li class="nav-item"><a href="Product_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
-										<li class="nav-item"><a href="" class="nav-link"> <i
-												class="far fa-circle nav-icon"></i>
-												<p>Loại Sản Phẩm</p>
-										</a></li>
-										<li class="nav-item"><a href="#" class="nav-link"> <i
-												class="far fa-circle nav-icon"></i>
-												<p>Sản Phẩm</p>
-										</a></li>
-
-
-										<li class="nav-item"><a href="#" class="nav-link"> <i
-												class="far fa-circle nav-icon"></i> =======
-												<li class="nav-item"><a href="Admin_Category.jsp"
-													class="nav-link"> <i class="far fa-circle nav-icon"></i>
-														<p>Loại Sản Phẩm</p>
-												</a></li>
-												<li class="nav-item"><a href="Product_View.jsp"
-													class="nav-link"> <i class="far fa-circle nav-icon"></i>
-														>>>>>>>
-														master:src/main/webapp/Admin/View/Admin_index_View.jsp
-														<p>Sản Phẩm</p>
-												</a></li>
-
-
-												<li class="nav-item"><a href="#" class="nav-link">
-														<i class="far fa-circle nav-icon"></i> =======
-														<li class="nav-item"><a href="Admin_Category.jsp"
-															class="nav-link"> <i class="far fa-circle nav-icon"></i>
-																<p>Loại Sản Phẩm</p>
-														</a></li>
-														<li class="nav-item"><a href="Product_View.jsp"
-															class="nav-link"> <i class="far fa-circle nav-icon"></i>
-																>>>>>>>
-																master:src/main/webapp/Admin/View/Admin_index_View.jsp
-																<p>Sản Phẩm</p>
-														</a></li>
+										<p>Sản Phẩm</p>
+								</a></li>
 							</ul></li>
-
 						<li class="nav-item"><a href="#" class="nav-link"> <i
 								class="nav-icon fas fa-table"></i>
-
 								<p>
 									Quản lý Hóa Đơn <i class="fas fa-angle-left right"></i>
 								</p>
 						</a>
 							<ul class="nav nav-treeview">
-
-
 								<li class="nav-item"><a href="Oder_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
-
-										<<<<<<< HEAD:src/main/webapp/Admin/Admin_index.jsp
-										<li class="nav-item"><a href="#" class="nav-link"> <i
-												class="far fa-circle nav-icon"></i> <<<<<<<
-												HEAD:src/main/webapp/Admin/Admin_index.jsp
-												<li class="nav-item"><a href="#" class="nav-link">
-														<i class="far fa-circle nav-icon"></i>
-
-														<p>Hóa Đơn</p>
-												</a></li>
-
-												<li class="nav-item"><a href="Oder_detail_View.jsp"
-													class="nav-link"> <i class="far fa-circle nav-icon"></i>
-
-														<li class="nav-item"><a href="#" class="nav-link">
-																<i class="far fa-circle nav-icon"></i>
-																<p>Hóa Đơn</p>
-														</a></li>
-														<li class="nav-item"><a href="#" class="nav-link">
-																<i class="far fa-circle nav-icon"></i>
-
-																<p>Chi Tiết Hóa Đơn</p>
-														</a></li>
-
-
-														<li class="nav-item"><a href="#" class="nav-link">
-																<i class="far fa-circle nav-icon"></i> =======
-																<li class="nav-item"><a href="Oder_View.jsp"
-																	class="nav-link"> <i class="far fa-circle nav-icon"></i>
-																		<p>Hóa Đơn</p>
-																</a></li>
-																<li class="nav-item"><a href="Oder_detail_View.jsp"
-																	class="nav-link"> <i class="far fa-circle nav-icon"></i>
-																		>>>>>>>
-																		master:src/main/webapp/Admin/View/Admin_index_View.jsp
-																		<p>Chi Tiết Hóa Đơn</p>
-																</a></li>
-
-
-																<li class="nav-item"><a href="#" class="nav-link">
-																		<i class="far fa-circle nav-icon"></i> =======
-																		<li class="nav-item"><a href="Oder_View.jsp"
-																			class="nav-link"> <i
-																				class="far fa-circle nav-icon"></i>
-																				<p>Hóa Đơn</p>
-																		</a></li>
-																		<li class="nav-item"><a
-																			href="Oder_detail_View.jsp" class="nav-link"> <i
-																				class="far fa-circle nav-icon"></i> >>>>>>>
-																				master:src/main/webapp/Admin/View/Admin_index_View.jsp
-																				<p>Chi Tiết Hóa Đơn</p>
-																		</a></li>
+										<p>Hóa Đơn</p>
+								</a></li>
+								<li class="nav-item"><a href="Oder_detail_View.jsp"
+									class="nav-link"> <i class="far fa-circle nav-icon"></i>
+										<p>Chi Tiết Hóa Đơn</p>
+								</a></li>
 							</ul></li>
-
 						<li class="nav-item"><a href="Customer_View.jsp"
 							class="nav-link"> <i class="nav-icon fas fa-users"></i>
-
-								<p>
-									Quản lý Khách Hàng</i>
-								</p>
+								<p>Quản lý Khách Hàng</p>
 						</a></li>
 						<li class="nav-item"><a href="Employee_View.jsp"
 							class="nav-link"> <i class="nav-icon fa-solid fas fa-user"></i>
-
-								<p>
-									Quản lý Nhân Sự</i>
-								</p>
+								<p>Quản lý Nhân Sự</p>
 						</a></li>
 						<li class="nav-item"><a href="Invengory_View.jsp"
 							class="nav-link"> <i class="nav-icon fas fa-house"></i>
-								<p>
-									Quản lý Kho</i>
-								</p>
+								<p>Quản lý Kho</p>
 						</a></li>
 						<li>
-
-							<p></p>
+							<p>
 						</li>
 						<li>
-
-							<p></p>
+							<p>
 						</li>
-						<li class="nav-item"><a href="../../logout.jsp" class="nav-link">
-								<i class="nav-icon fa-sharp fa-solid fa-right-from-bracket"></i>Đăng
-								Xuất
+						<li class="nav-item"><a href="../../logout.jsp"
+							class="nav-link"> <i
+								class="nav-icon fa-sharp fa-solid fa-right-from-bracket"></i>
+								Đăng Xuất
 						</a></li>
+					</ul>
 				</nav>
+
 				<!-- /.sidebar-menu -->
 			</div>
 			<!-- /.sidebar -->
