@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+String footerBasePath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,7 @@
                     <div class="row">
                         <div class="item-tintuc col-xl-3 col-md-6">
                             <a href="">
-                                <img class="" src="img/footer/footer-tintuc-1.jpg" alt="">
+                                <img class="" src="<%=footerBasePath%>/img/footer/footer-tintuc-1.jpg" alt="">
                             </a>
                             <div class="media-body">
                                 <div class="info-tintuc">
@@ -35,7 +37,7 @@
                         </div>
                         <div class="item-tintuc col-xl-3 col-md-6">
                             <a href="">
-                                <img class="" src="img/footer/footer-tintuc-2.jpg" alt="">
+                                <img class="" src="<%=footerBasePath%>/img/footer/footer-tintuc-2.jpg" alt="">
                             </a>
                             <div class="media-body">
                                 <div class="info-tintuc">
@@ -53,7 +55,7 @@
                         <!-- end_col_lg_3 -->
                         <div class="item-tintuc col-xl-3 col-md-6">
                             <a href="">
-                                <img class="" src="img/footer/footer-tintuc-3.jpg" alt="">
+                                <img class="" src="<%=footerBasePath%>/img/footer/footer-tintuc-3.jpg" alt="">
                             </a>
                             <div class="media-body">
                                 <div class="info-tintuc">
@@ -72,7 +74,7 @@
                         <!-- end_col_lg_3 -->
                         <div class="item-tintuc col-xl-3 col-md-6">
                             <a href="">
-                                <img class="" src="img/footer/footer-tintuc-4.jpg" alt="">
+                                <img class="" src="<%=footerBasePath%>/img/footer/footer-tintuc-4.jpg" alt="">
                             </a>
                             <div class="media-body">
                                 <div class="info-tintuc">
@@ -126,7 +128,7 @@
                             <li>Gửi góp ý, khiếu nại</li>
                             <li class="baohanh-item mt-3">
                                 <a href="http://www.online.gov.vn/Home/WebDetails/76577?AspxAutoDetectCookieSupport=1" class="thongbaobct">
-                                    <img src="img/footer/footer-icon.png"></a>
+                                    <img src="<%=footerBasePath%>/img/footer/footer-icon.png"></a>
                             </li>
                         </ul>
                     </div>

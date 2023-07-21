@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    String bannerBasePath = request.getContextPath();
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,13 +20,13 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active hvr-trim">
-                            <img src="img/carousels/carousel_1.jpg" class="d-block w-100" alt="Wild Landscape" />
+                            <img src="<%=bannerBasePath%>/img/carousels/carousel_1.jpg" class="d-block w-100" alt="Wild Landscape" />
                         </div>
                         <div class="carousel-item hvr-trim">
-                            <img src="img/carousels/carousel_2.jpg" class="d-block w-100" alt="Camera" />
+                            <img src="<%=bannerBasePath%>/img/carousels/carousel_2.jpg" class="d-block w-100" alt="Camera" />
                         </div>
                         <div class="carousel-item hvr-trim">
-                            <img src="img/carousels/carousel_3.jpg" class="d-block w-100" alt="Exotic Fruits" />
+                            <img src="<%=bannerBasePath%>/img/carousels/carousel_3.jpg" class="d-block w-100" alt="Exotic Fruits" />
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleCrossfade" role="button" data-slide="prev">
@@ -57,10 +60,10 @@
             <div class="col-xl-4 ">
                 <div class="row">
                     <div class="col-xl-12 hvr-shrink">
-                        <img src="img/banner/span1.jpg" alt="" class="img__span hide-tablet hide-mobile ">
+                        <img src="<%=bannerBasePath%>/img/banner/span1.jpg" alt="" class="img__span hide-tablet hide-mobile ">
                     </div>
                     <div class="col-xl-12 mt-3 hvr-shrink">
-                        <img src="img/banner/span2.jpg" alt="" class="img__span hide-tablet hide-mobile">
+                        <img src="<%=bannerBasePath%>/img/banner/span2.jpg" alt="" class="img__span hide-tablet hide-mobile">
                     </div>
                 </div>
             </div>
@@ -71,10 +74,10 @@
     <div class="container spanner2">
         <div class="row d-flex">
             <div class="col-xl-6 hvr-float-shadow">
-                <img src="img/banner/span3.jpg" alt="" class="hide-tablet hide-mobile">
+                <img src="<%=bannerBasePath%>/img/banner/span3.jpg" alt="" class="hide-tablet hide-mobile">
             </div>
             <div class="col-xl-6 hvr-float-shadow">
-                <img src="img/banner/span4.jpg" alt="" class="hide-tablet hide-mobile">
+                <img src="<%=bannerBasePath%>/img/banner/span4.jpg" alt="" class="hide-tablet hide-mobile">
             </div>
         </div>
     </div>
