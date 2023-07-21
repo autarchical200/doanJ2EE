@@ -1,12 +1,13 @@
+
 <%@page import="pxu.edu.vn.category.CategoryModel"%>
 <%@page import="pxu.edu.vn.category.Category"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page
-	import="java.io.*, java.util.*, javax.servlet.*, javax.servlet.http.*"%>
+	import="java.io.*,java.util.*,javax.servlet.*,javax.servlet.http.*"%>
 <%@ page
-	import="pxu.edu.vn.brand.brandModel, pxu.edu.vn.product.ProductModel, java.util.*, com.google.gson.Gson, pxu.edu.vn.product.Product, pxu.edu.vn.brand.brand"%>
+	import="pxu.edu.vn.brand.brandModel,pxu.edu.vn.product.ProductModel,java.util.*,com.google.gson.Gson, pxu.edu.vn.product.Product,pxu.edu.vn.brand.brand"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 
 <%
@@ -26,11 +27,13 @@ for (Product p : products) {
 	p.setBrand_name(brandName);
 }
 // Lấy danh sách danh mục sản phẩm từ model (để lấy thông tin tên danh mục)
-List<Category> categories = CategoryModel.getAll();
+
+List<Category> categories = CategoryModel.getAllCategories();
+
 Map<Integer, String> categoryMap = new HashMap<>(); // Sử dụng Map để ánh xạ category_id với tên danh mục
 // Tạo categoryMap từ danh sách danh mục
 for (Category c : categories) {
-	categoryMap.put(c.getCategory_id(), c.getCategory_name());
+	categoryMap.put(c.getCategoryID(), c.getCategoryName());
 }
 // Gán tên danh mục vào từng sản phẩm
 for (Product p : products) {

@@ -7,8 +7,9 @@
 
 <%
 // Lấy danh sách hãng sản phẩm từ model
-List<Category> brands = CategoryModel.getAll();
 
+List<Category> brands = CategoryModel.getAllCategories();
+	
 // Convert danh sách hãng sản phẩm thành JSON
 Gson gson = new Gson();
 String json = gson.toJson(brands);

@@ -4,7 +4,7 @@
 	<%@ page import="java.util.ArrayList"%>
 	<%@ page import="java.util.List"%>
 	<%@ page import="pxu.edu.vn.product.Product"%>
-	<%@ page import="pxu.edu.vn.category.Category"%>
+	<%@ page import="pxu.edu.vn.category.*"%>
 	<%@ page import="pxu.edu.vn.brand.*"%>
 	<%@ page import="pxu.edu.vn.product.*"%>
 	
@@ -155,8 +155,8 @@
 												categories,
 												function(index, category) {
 													categorySelect
-															.append('<option value="' + category.category_id + '">'
-																	+ category.category_name
+															.append('<option value="' + category.categoryID + '">'
+																	+ category.categoryName
 																	+ '</option>');
 												});
 							}
