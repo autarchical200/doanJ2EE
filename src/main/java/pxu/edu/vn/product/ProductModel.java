@@ -1,6 +1,7 @@
 package pxu.edu.vn.product;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -50,7 +51,49 @@ public class ProductModel {
         }
         return productList;
     }
+    public static ArrayList<Product> getProductsByCategoryId(int categoryId) throws Exception {
+        ArrayList<Product> productList = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
+        try {
+            conn = DBConnection.getConnection();
+            String sql = "SELECT * FROM products WHERE category_id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, categoryId);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Product product = new Product();
+                product.setProductID(rs.getInt(1));
+                product.setProductName(rs.getString(2));
+                product.setCategoryID(rs.getInt(3));
+                product.setBrandID(rs.getInt(4));
+                product.setPrice(rs.getDouble(5));
+                product.setDiscountedPrice(rs.getDouble(6));
+                product.setProductImg(rs.getString(7));
+                product.setProductInfo(rs.getString(8));
+                productList.add(product);
+            }
+        } catch (SQLException e) {
+            throw new Exception("Lỗi khi lấy dữ liệu từ cơ sở dữ liệu", e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                throw new Exception("Lỗi khi đóng kết nối", ex);
+            }
+        }
+        return productList;
+    }
     // Hàm Thêm Dữ Liệu
     public static void insertProduct(Product product) throws Exception {
         Connection conn = null;
