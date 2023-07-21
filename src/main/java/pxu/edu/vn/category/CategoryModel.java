@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 import pxu.edu.vn.dao.DBConnection;
 
-public class categoryModel {
-	public static ArrayList<category> getAll() throws Exception {
-		ArrayList<category> lst = new ArrayList<>();
+public class CategoryModel {
+	public static ArrayList<Category> getAll() throws Exception {
+		ArrayList<Category> lst = new ArrayList<>();
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -22,7 +22,7 @@ public class categoryModel {
 			String sql = "SELECT * FROM categories";
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				category category = new category();
+				Category category = new Category();
 				category.setCategory_id(rs.getInt(1));
 				category.setCategory_name(rs.getString(2));
 				lst.add(category);
@@ -51,7 +51,7 @@ public class categoryModel {
 	}
 
 	// Hàm Thêm Dữ Liệu
-	public static void insertCategory(category category) throws Exception {
+	public static void insertCategory(Category category) throws Exception {
 		Connection conn = null;
 		Statement stmt = null;
 
@@ -80,7 +80,7 @@ public class categoryModel {
 	}
 
 	// Hàm Sửa Dữ Liệu
-	public static void updateCategory(category category) throws Exception {
+	public static void updateCategory(Category category) throws Exception {
 		Connection conn = null;
 		Statement stmt = null;
 
@@ -138,7 +138,7 @@ public class categoryModel {
 		}
 	}
 
-	public static category getcategoryById(int productId) throws Exception {
+	public static Category getcategoryById(int productId) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -150,7 +150,7 @@ public class categoryModel {
 			pstmt.setInt(1, productId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				category category = new category();
+				Category category = new Category();
 				category.setCategory_id(rs.getInt("category_id"));
 				category.setCategory_name(rs.getString("category_name"));
 				return category;

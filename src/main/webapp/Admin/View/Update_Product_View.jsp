@@ -4,7 +4,7 @@
 	<%@ page import="java.util.ArrayList"%>
 	<%@ page import="java.util.List"%>
 	<%@ page import="pxu.edu.vn.product.Product"%>
-	<%@ page import="pxu.edu.vn.category.category"%>
+	<%@ page import="pxu.edu.vn.category.Category"%>
 	<%@ page import="pxu.edu.vn.brand.*"%>
 	<%@ page import="pxu.edu.vn.product.*"%>
 	

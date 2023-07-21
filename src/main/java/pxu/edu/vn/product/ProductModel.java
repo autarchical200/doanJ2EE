@@ -16,6 +16,55 @@ public class ProductModel {
 		// TODO Auto-generated constructor stub
 	}
 
+	// Hàm lấy danh sách sản phẩm theo ID danh mục (category)
+	public static List<Product> getProductsByCategoryId(int categoryId) throws Exception {
+		List<Product> lst = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBConnection.getConnection();
+
+			String sql = "SELECT * FROM products WHERE category_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, categoryId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Product product = new Product();
+				product.setProduct_id(rs.getInt("product_id"));
+				product.setProduct_name(rs.getString("product_name"));
+				product.setCategory_id(rs.getInt("category_id"));
+				product.setBrand_id(rs.getInt("brand_id"));
+				product.setPrice(rs.getDouble("price"));
+				product.setDiscounted_price(rs.getDouble("discounted_price"));
+				product.setProduct_image(rs.getString("product_image"));
+				product.setProduct_info(rs.getString("product_info"));
+				lst.add(product);
+			}
+		} catch (SQLException e) {
+			// Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
+			throw new Exception("Lỗi khi lấy dữ liệu từ cơ sở dữ liệu", e);
+		} finally {
+			// Đảm bảo đóng kết nối và giải phóng tài nguyên sau khi sử dụng xong
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException ex) {
+				// Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
+				throw new Exception("Lỗi khi đóng kết nối", ex);
+			}
+		}
+		return lst;
+	}
+
 	// Hàm lấy danh sách tất cả sản phẩm
 	public static List<Product> getAll() throws Exception {
 		List<Product> lst = new ArrayList<>();
