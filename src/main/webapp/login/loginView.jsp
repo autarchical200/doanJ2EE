@@ -128,7 +128,7 @@ if (session.getAttribute("username") != null) {
 
 								<div>
 									<%
-									String signup = "registerPage.jsp";
+									String signup = "../Register/Register_View.jsp";
 									%>
 									<p class="mb-0">
 										Don't have an account? <a href="<%=signup%>"

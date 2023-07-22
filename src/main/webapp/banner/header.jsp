@@ -96,7 +96,7 @@ boolean isLoggedIn = (username != null);
 								class="nav-item nav-link me-4" data-toggle="modal"
 								data-target="#modalLoginForm"> <i
 								class="bi bi-box-arrow-in-left"></i> Đăng nhập
-							</a> <a href="<%=headerBasePath%>/test-register.html"
+							</a> <a href="<%=headerBasePath%>/Register/Register_View.jsp"
 								class="nav-item nav-link me-4"> <i
 								class="bi bi-box-arrow-right"></i> Đăng ký
 							</a>

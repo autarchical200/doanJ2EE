@@ -1,115 +1,161 @@
+
 <%
-    // Kiểm tra session, nếu đã tồn tại user thì kiểm tra role và điều hướng trang
-    if (session.getAttribute("username") != null) {
-        String role = (String) session.getAttribute("role");
-        if (role != null) {
-            if (role.equals("admin")) {
-                // Điều hướng đến trang admin
-                response.sendRedirect("../Admin/View/Admin_index_View.jsp");
-            } 
-            // Nếu role khác admin hoặc customer thì xử lý trường hợp khác (nếu cần)
-        }
-    } else {
-        // Nếu không tồn tại user, đưa về trang login
-        response.sendRedirect("../login/loginView.jsp");
-    }
+// Kiểm tra session, nếu đã tồn tại user thì kiểm tra role và điều hướng trang
+if (session.getAttribute("username") != null) {
+	String role = (String) session.getAttribute("role");
+	if (role != null) {
+		if (role.equals("admin")) {
+	// Điều hướng đến trang admin
+	response.sendRedirect("../Admin/View/Admin_index_View.jsp");
+		}
+		// Nếu role khác admin hoặc customer thì xử lý trường hợp khác (nếu cần)
+	}
+} else {
+	// Nếu không tồn tại user, đưa về trang login
+	response.sendRedirect("../login/loginView.jsp");
+}
 %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Danh sách sản phẩm</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-          crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/reponsive.css">
-    <link rel="stylesheet" href="../css/index.css">
+<meta charset="UTF-8">
+<title>Danh sách sản phẩm</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="../css/reponsive.css">
+<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/hover.css">
+
 </head>
 <body>
-    <%-- Include the header and spanner --%>
-    <%@ include file="../banner/header.jsp"%>
-    <%@ include file="../banner/spanner.jsp"%>
+	<%-- Include the header and spanner --%>
+	<%@ include file="../banner/header.jsp"%>
+	<%@ include file="../banner/spanner.jsp"%>
 
-    <div class="product">
-        <div class="container product-item">
-            <div class="row product__show" id="productContainer"></div>
-        </div>
-    </div>
-    <!-- end product -->
+	<div class="product">
+		<div class="container product-item">
+			<div class="row product__show" id="productContainer"></div>
+		</div>
+	</div>
+	<!-- end product -->
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            var categoryIDs = [1, 2, 3, 4, 5]; // Các categoryID bạn muốn hiển thị
-            var productContainer = $('#productContainer');
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							var categoryIDs = [ 1, 2, 3, 4, 5 ]; // Các categoryID bạn muốn hiển thị
+							var productContainer = $('#productContainer');
 
-            categoryIDs.forEach(function (categoryID) {
-                // Gọi Ajax để lấy dữ liệu JSON từ "IndexController.jsp" cho từng categoryID
-                $.ajax({
-                    url: "../IndexController.jsp?categoryID=" + categoryID,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        // Xử lý dữ liệu JSON và hiển thị trong bảng cho từng categoryID
-                        var categoryName = data.categoryName;
-                        var products = data.products;
+							categoryIDs
+									.forEach(function(categoryID) {
+										// Gọi Ajax để lấy dữ liệu JSON từ "IndexController.jsp" cho từng categoryID
+										$
+												.ajax({
+													url : "../IndexController.jsp?categoryID="
+															+ categoryID,
+													type : "GET",
+													dataType : "json",
+													success : function(data) {
+														// Xử lý dữ liệu JSON và hiển thị trong bảng cho từng categoryID
+														var categoryName = data.categoryName;
+														var products = data.products;
 
-                        var productHead = '<div class="pro-head">' +
-                                '<div class="product-title">' +
-                                '<p>' + categoryName + '</p>' +
-                                '</div>' +
-                                '</div>';
-                        productContainer.append(productHead);
+														var productHead = '<div class="pro-head">'
+																+ '<div class="product-title">'
+																+ '<p>'
+																+ categoryName
+																+ '</p>'
+																+ '</div>'
+																+ '</div>';
+														productContainer
+																.append(productHead);
 
-                        products.forEach(function (product) {
-                            var card = '<div class="col-md-6 col-lg-3 mt-4">' +
-                                    '<div class="card">' +
-                                    '<form action="../product_detailView.jsp" method="post">' + // Đổi thành phương thức POST và sử dụng form
-                                    '<input type="hidden" name="img" value="' + encodeURIComponent("../img/products/" + product.product_image) + '">' +
-                                    '<input type="hidden" name="name" value="' + encodeURIComponent(product.product_name) + '">' +
-                                    '<input type="hidden" name="info" value="' + encodeURIComponent(product.product_info) + '">' +
-                                    '<input type="hidden" name="price" value="' + encodeURIComponent(product.price) + '">' +
-                                    '<input type="hidden" name="discountedPrice" value="' + encodeURIComponent(product.discounted_price) + '">' +
-                                    '<a href="javascript:;" onclick="this.parentNode.submit(); return false;">' +
-                                    '<img src="../img/products/' + product.product_image + '" class="card-img-top" alt="Product Image">' +
-                                    '</a>' +
-                                    '</form>' +
-                                    '<div class="card-body">' +
-                                    '<h5 class="card-title">' +
-                                    '<a href="javascript:;" onclick="this.parentNode.submit(); return false;">' + // Gọi hàm submit form khi click vào link
-                                    product.product_name +
-                                    '</a>' +
-                                    '</h5>' +
-                                    '<p class="card-text">' + product.product_info + '</p>' +
-                                    '<div class="d-flex">';
-                            if (product.discounted_price > 0) {
-                                card += '<p class="product_discount-price">' + product.discounted_price + '</p>';
-                            }
-                            card += '<p class="product_price">' + product.price + '</p>' +
-                                    '</div>' +
-                                    '<a href="javascript:;" onclick="this.parentNode.submit(); return false;" class="btn btn-primary">Xem chi tiết</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '</div>';
+														products
+																.forEach(function(
+																		product) {
+																	var card = '<div class="col-md-6 col-lg-3 mt-4  hvr-float">'
+																			+ '<div class="card">'
+																			+ '<form action="../product_detailView.jsp" method="post">'
+																			+ // Đổi thành phương thức POST và sử dụng form
+																			'<input type="hidden" name="img" value="'
+																			+ encodeURIComponent("../img/products/"
+																					+ product.product_image)
+																			+ '">'
+																			+ '<input type="hidden" name="name" value="'
+																			+ encodeURIComponent(product.product_name)
+																			+ '">'
+																			+ '<input type="hidden" name="info" value="'
+																			+ encodeURIComponent(product.product_info)
+																			+ '">'
+																			+ '<input type="hidden" name="price" value="'
+																			+ encodeURIComponent(product.price)
+																			+ '">'
+																			+ '<input type="hidden" name="discountedPrice" value="'
+																			+ encodeURIComponent(product.discounted_price)
+																			+ '">'
+																			+ '<a href="javascript:;" onclick="this.parentNode.submit(); return false;">'
+																			+ '<img src="../img/products/' + product.product_image + '" class="card-img-top" alt="Product Image">'
+																			+ '</a>'
+																			+ '</form>'
+																			+ '<div class="card-body">'
+																			+ '<h5 class="card-title">'
+																			+ '<a href="javascript:;" onclick="this.parentNode.submit(); return false;">'
+																			+ // Gọi hàm submit form khi click vào link
+																			product.product_name
+																			+ '</a>'
+																			+ '</h5>'
+																			+ '<p class="card-text">'
+																			+ product.product_info
+																			+ '</p>'
+																			+ '<div class="d-flex">';
+																	if (product.discounted_price > 0) {
+																		card += '<p class="product_discount-price">'
+																				+ product.discounted_price
+																				+ '</p>';
+																	}
+																	card += '<p class="product_price">'
+																			+ product.price
+																			+ '</p>'
+																			+ '</div>'
+																			+ '<a href="javascript:;" onclick="this.parentNode.submit(); return false;" class="btn btn-primary">Xem chi tiết</a>'
+																			+ '</div>'
+																			+ '</div>'
+																			+ '</div>';
 
-                            productContainer.append(card);
-                        });
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                    }
-                });
-            });
-        });
-    </script>
+																	productContainer
+																			.append(card);
+																});
+													},
+													error : function(jqXHR,
+															textStatus,
+															errorThrown) {
+														console.log(textStatus,
+																errorThrown);
+													}
+												});
+									});
+						});
+	</script>
 
-    <%-- Include the footer --%>
-    <%@ include file="../banner/footer.jsp"%>
+	<%-- Include the footer --%>
+	<%@ include file="../banner/footer.jsp"%>
 </body>
 </html>

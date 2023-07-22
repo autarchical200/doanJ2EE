@@ -59,34 +59,40 @@ public class CustomerModel {
 
 	// Hàm Thêm Dữ Liệu
 	public static void insertCustomer(Customer customer) throws Exception {
-		Connection conn = null;
-		Statement stmt = null;
+	    Connection conn = null;
+	    PreparedStatement stmt = null;
 
-		try {
-			conn = DBConnection.getConnection();
-			stmt = conn.createStatement();
-			String sql = "INSERT INTO users (username, password, email, phone, full_name, gender, role) VALUES ('"
-					+ customer.getUsername() + "', '" + customer.getPassword() + "', '" + customer.getEmail() + "', '"
-					+ customer.getPhone() + "', '" + customer.getFull_name() + "', '" + customer.getGender() + "', '"
-					+ customer.getRole() + "')";
-			stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
-			throw new Exception("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu", e);
-		} finally {
-			// Đảm bảo đóng kết nối và giải phóng tài nguyên sau khi sử dụng xong
-			try {
-				if (stmt != null) {
-					stmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException ex) {
-				// Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
-				throw new Exception("Lỗi khi đóng kết nối", ex);
-			}
-		}
+	    try {
+	        conn = DBConnection.getConnection();
+	        String sql = "INSERT INTO users (username, password, email, phone, full_name, gender, role) " +
+	                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
+	        stmt = conn.prepareStatement(sql);
+	        stmt.setString(1, customer.getUsername());
+	        stmt.setString(2, customer.getPassword());
+	        stmt.setString(3, customer.getEmail());
+	        stmt.setString(4, customer.getPhone());
+	        stmt.setString(5, customer.getFull_name());
+	        stmt.setString(6, customer.getGender());
+	        stmt.setString(7, "customer"); // Set giá trị mặc định cho trường role là "customer"
+
+	        stmt.executeUpdate();
+	    } catch (SQLException e) {
+	        // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
+	        throw new Exception("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu", e);
+	    } finally {
+	        // Đảm bảo đóng kết nối và giải phóng tài nguyên sau khi sử dụng xong
+	        try {
+	            if (stmt != null) {
+	                stmt.close();
+	            }
+	            if (conn != null) {
+	                conn.close();
+	            }
+	        } catch (SQLException ex) {
+	            // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
+	            throw new Exception("Lỗi khi đóng kết nối", ex);
+	        }
+	    }
 	}
 
 	// Hàm Sửa Dữ Liệu

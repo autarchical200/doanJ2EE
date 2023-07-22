@@ -30,6 +30,8 @@ if (session.getAttribute("username") != null) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/reponsive.css">
     <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/hover.css">
+    
 </head>
 <body>
     <%-- Include the header and spanner --%>
@@ -68,7 +70,7 @@ if (session.getAttribute("username") != null) {
                         productContainer.append(productHead);
 
                         products.forEach(function (product) {
-                            var card = '<div class="col-md-6 col-lg-3 mt-4">' +
+                            var card = '<div class="col-md-6 col-lg-3 mt-4 hvr-float">' +
                                     '<div class="card">' +
                                     '<img src="img/products/' + product.product_image + '" class="card-img-top" alt="Product Image">' +
                                     '<div class="card-body">' +

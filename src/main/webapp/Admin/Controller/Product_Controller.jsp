@@ -59,7 +59,7 @@ if (request.getParameter("action") != null) {
 		String imagePath;
 		if (imagePart != null && !imagePart.isEmpty()) {
 	// Nếu có tải lên ảnh mới, lưu ảnh vào thư mục tùy chỉnh và cập nhật đường dẫn ảnh mới
-	imagePath = "../../public/img/products/" + imagePart;
+	imagePath = "../../img/products/" + imagePart;
 	// Code để lưu ảnh vào thư mục tùy chỉnh ở đây (sử dụng FileOutputStream và inputStream của Part)
 		} else {
 	// Nếu không có ảnh mới, giữ nguyên đường dẫn ảnh ban đầu từ đối tượng sản phẩm hiện tại
@@ -88,7 +88,7 @@ if (request.getParameter("action") != null) {
 		String imagePart = request.getParameter("image");
 		String info = request.getParameter("info");
 		// Lưu hình ảnh vào thư mục tùy chỉnh, ví dụ: /path/to/your/images
-		String imagePath = "../../public/img/products/" + imagePart;
+		String imagePath = "../../img/products/" + imagePart;
 		// Tạo đối tượng sản phẩm và lưu vào cơ sở dữ liệu
 		Product newProduct = new Product();
 		newProduct.setProduct_name(name);

@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
@@ -8,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Đăng Ký</title>
+<!-- Thư viện CSS và JS Bootstrap -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -18,8 +18,10 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 	crossorigin="anonymous"></script>
+<!-- Thư viện Bootstrap Icons -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<!-- CSS tùy chỉnh -->
 <link rel="stylesheet" href="../css/reponsive.css">
 <link rel="stylesheet" href="../css/index.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -33,63 +35,64 @@
 <body>
 	<%@ include file="../banner/header.jsp"%>
 	<div class="login-form">
-		<form action="xuLyRegisterPage.jsp" method="post"
-			onsubmit="return validateForm() && validateUsername()">
+		<form action="RegisterController.jsp" method="post"
+			onsubmit="return validateForm()">
+			<input type="hidden" name="action" value="add">
 			<section class="vh-80">
 				<div class="container py-5 h-20">
 					<div
 						class="row d-flex justify-content-center align-items-center h-80">
 						<div class="col-12 col-md-8 col-lg-6 col-xl-5">
-							<div class="card  text-white"
+							<div class="card text-white"
 								style="border-radius: 0.5rem; background-color: #2b80dd;">
 								<div class="card-body p-5 text-center">
-
 									<div class="pb-5">
-
 										<h2 class="fw-bold mb-2 text-uppercase">ĐĂNG KÝ</h2>
 										<p class="text-white-30 mb-5">Vui lòng nhập đầy đủ thông
 											tin</p>
-
+										<!-- Tên tài khoản -->
 										<div class="form-outline form-white mb-4">
-											<label class="form-label d-flex" for="typeEmailX">Tên
+											<label class="form-label d-flex" for="username">Tên
 												tài khoản</label> <input type="text"
 												class="form-control form-control-xl" name="username"
 												id="username" placeholder="Nhập tên tài khoản của bạn..."
-												onblur="validateUsername()" />
+												onblur="validateUsername()">
 											<div id="usernameError" class="invalid-feedback"></div>
 										</div>
-
+										<!-- Mật khẩu -->
 										<div class="form-outline form-white mb-4">
-											<label class="form-label d-flex " for="typePasswordX">Mật
+											<label class="form-label d-flex" for="password">Mật
 												khẩu</label> <input type="password"
 												class="form-control form-control-xl" name="password"
 												id="password" placeholder="Nhập mật khẩu của bạn..."
-												onblur="validateField('password')" />
+												onblur="validateField('password')">
 										</div>
+										<!-- Họ và tên -->
 										<div class="form-outline form-white mb-4">
-											<label class="form-label d-flex " for="typePasswordX">Họ
+											<label class="form-label d-flex" for="full_name">Họ
 												và tên</label> <input type="text"
 												class="form-control form-control-xl" name="full_name"
 												id="full_name" placeholder="Nhập họ và tên..."
-												onblur="validateField('full_name')" />
+												onblur="validateField('full_name')">
 										</div>
+										<!-- Số điện thoại -->
 										<div class="form-outline form-white mb-4">
-											<label class="form-label d-flex " for="typePasswordX">Số
-												điện thoại</label> <input type="tel"
-												class="form-control form-control-xl" name="phone" id="phone"
-												placeholder="Nhập số điện thoại..."
-												onblur="validateField('phone')" />
+											<label class="form-label d-flex" for="phone">Số điện
+												thoại</label> <input type="tel" class="form-control form-control-xl"
+												name="phone" id="phone" placeholder="Nhập số điện thoại..."
+												onblur="validateField('phone')">
 										</div>
+										<!-- Email -->
 										<div class="form-outline form-white mb-4">
-											<label class="form-label d-flex " for="typePasswordX">Email</label>
-											<input type="email" class="form-control form-control-xl"
-												name="email" id="emailInput" placeholder="Nhập email..."
-												onblur="validateField('email')" />
+											<label class="form-label d-flex" for="email">Email</label> <input
+												type="email" class="form-control form-control-xl"
+												name="email" id="email" placeholder="Nhập email..."
+												onblur="validateField('email')">
 										</div>
-
+										<!-- Nút đăng ký -->
 										<button class="btn btn-outline-light btn-lg px-5 mb-3"
 											type="submit">ĐĂNG KÝ</button>
-
+										<!-- Các liên kết mạng xã hội -->
 										<div class="d-flex justify-content-center text-center">
 											<a href="#!" class="text-white"><i class="bi bi-facebook"></i></a>
 											<a href="#!" class="text-white"><i class="bi bi-youtube"></i></a>
@@ -101,11 +104,10 @@
 										String signup = "../login/loginView.jsp";
 										%>
 										<p class="mb-0">
-											you have an account? <a href="<%=signup%>"
-												class="text-white-50 fw-bold">Login</a>
+											Bạn đã có tài khoản? <a href="<%=signup%>"
+												class="text-white-50 fw-bold">Đăng nhập</a>
 										</p>
 									</div>
-
 								</div>
 							</div>
 						</div>
@@ -113,11 +115,10 @@
 				</div>
 			</section>
 		</form>
-
 	</div>
 	<%@ include file="../banner/footer.jsp"%>
 
-	<script>
+	   <script>
         var isFieldBlurred = {
             username: false,
             password: false,
@@ -159,7 +160,6 @@
             var username = document.getElementById("username").value;
             var usernameError = document.getElementById("usernameError");
 
-            // Gửi yêu cầu AJAX đến file xử lý và nhận kết quả trả về
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -175,20 +175,21 @@
                             });
                             usernameError.classList.add("invalid-feedback");
                             document.getElementById("username").classList.add("is-invalid");
-                            isUsernameExist = true; // Đặt biến isUsernameExist thành true
+                            isUsernameExist = true;
                         } else {
                             // Username không tồn tại, xóa thông báo lỗi
                             usernameError.textContent = "";
                             usernameError.classList.remove("invalid-feedback");
                             document.getElementById("username").classList.remove("is-invalid");
-                            isUsernameExist = false; // Đặt biến isUsernameExist thành false
+                            isUsernameExist = false;
                         }
                     } else {
                         console.error("Error:", xhr.status);
                     }
                 }
             };
-            xhr.open("POST", "../model/check_username.php", true);
+
+            xhr.open("GET", "check_username.jsp", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.send("username=" + encodeURIComponent(username));
         }
@@ -290,7 +291,16 @@
                 return false;
             }
 
-            return true;
+            // Thêm thông báo thành công vào vị trí cuối hàm validateForm()
+            Swal.fire({
+                icon: 'success',
+                title: 'Đăng ký thành công!',
+                text: 'Bạn đã đăng ký tài khoản thành công.',
+                confirmButtonText: 'Đóng'
+            });
+
+            // Để chắc chắn rằng form không được submit ngay lập tức sau khi hiển thị thông báo
+            return false;
         }
 
         function isValidPhone(phone) {
@@ -306,6 +316,7 @@
             return emailRegex.test(email);
         }
     </script>
+    
 
 </body>
 </html>
