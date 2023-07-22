@@ -73,7 +73,7 @@
 							</div>
 							<div class="form-group">
 								<label for="image">Thông Tin Sản Phẩm</label>
-								<textarea id="compose-textarea" name="info" class="form-control"
+								<textarea  name="info" class="form-control"
 									required></textarea>
 							</div>
 

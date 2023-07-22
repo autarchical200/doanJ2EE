@@ -118,7 +118,7 @@
 	</div>
 	<%@ include file="../banner/footer.jsp"%>
 
-	   <script>
+	<script>
         var isFieldBlurred = {
             username: false,
             password: false,
@@ -316,7 +316,7 @@
             return emailRegex.test(email);
         }
     </script>
-    
+
 
 </body>
 </html>
