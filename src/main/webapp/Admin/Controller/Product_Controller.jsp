@@ -5,7 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page
-	import="java.io.*,java.util.*,javax.servlet.*,javax.servlet.http.*"%>
+	import="java.io.*,java.util.*"%>
 <%@ page
 	import="pxu.edu.vn.brand.brandModel,pxu.edu.vn.product.ProductModel,java.util.*,com.google.gson.Gson, pxu.edu.vn.product.Product,pxu.edu.vn.brand.brand"%>
 <%@ page import="java.text.SimpleDateFormat"%>
@@ -70,21 +70,20 @@ if (request.getParameter("action") != null) {
 		String name = request.getParameter("name");
 		int categoryId = Integer.parseInt(request.getParameter("category"));
 		int brandId = Integer.parseInt(request.getParameter("brand"));
-		double price = Double.parseDouble(request.getParameter("price"));
-		double discountedPrice = Double.parseDouble(request.getParameter("discounted"));
+		long price = Long.parseLong(request.getParameter("price"));
+		long discountedPrice =Long.parseLong(request.getParameter("discounted"));
 		String info = request.getParameter("info");
 		// Tạo đối tượng sản phẩm và cập nhật vào cơ sở dữ liệu
 		Product product = new Product(idd, name, categoryId, brandId, price, discountedPrice, imagePath, info);
 		ProductModel productService = new ProductModel();
 		productService.updateProduct(product);
-		// Chuyển hướng về trang hiển thị danh sách sản phẩm sau khi cập nhật thành công
 		response.sendRedirect("../View/Product_View.jsp");
 	} else if (action.equals("add")) {
 		String name = request.getParameter("name");
 		int categoryId = Integer.parseInt(request.getParameter("category"));
 		int brandId = Integer.parseInt(request.getParameter("brand"));
-		double price = Double.parseDouble(request.getParameter("price"));
-		double discountedPrice = Double.parseDouble(request.getParameter("discounted"));
+		long price = Long.parseLong(request.getParameter("price"));
+		long discountedPrice = Long.parseLong(request.getParameter("discounted"));
 		String imagePart = request.getParameter("image");
 		String info = request.getParameter("info");
 		// Lưu hình ảnh vào thư mục tùy chỉnh, ví dụ: /path/to/your/images
@@ -114,3 +113,4 @@ if (request.getParameter("action") != null) {
 	}
 }
 %>
+

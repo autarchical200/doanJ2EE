@@ -4,10 +4,8 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
-	<display-name>doanJ2EE</display-name>
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
+
+	<!-- Configuration parameters -->
 	<context-param>
 		<param-name>dbServer</param-name>
 		<param-value>mysql</param-value>
@@ -36,25 +34,43 @@
 		<param-name>dbDriver</param-name>
 		<param-value>com.cj.mysql.jdbc.Driver</param-value>
 	</context-param>
+	
+	<!-- Servlet Definitions -->
 	<servlet>
 		<servlet-name>ProductDetailServlet</servlet-name>
 		<servlet-class>pxu.edu.vn.product.ProductDetailServlet</servlet-class>
 	</servlet>
 
-	<!-- Mapping URL cho Servlet -->
+	<servlet>
+		<servlet-name>ProductSearchServlet</servlet-name>
+		<servlet-class>pxu.edu.vn.product.ProductSearchServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SendMailServlet</servlet-name>
+		<servlet-class>pxu.edu.vn.SendMail.SendMailServlet</servlet-class>
+	</servlet>
+
+	<!-- Servlet Mappings -->
 	<servlet-mapping>
 		<servlet-name>ProductDetailServlet</servlet-name>
 		<url-pattern>/ProductDetailServlet</url-pattern>
 	</servlet-mapping>
-		<servlet>
-		<servlet-name>ProductSearchServlet</servlet-name>
-		<servlet-class>pxu.edu.vn.product.ProductSearchServlet</servlet-class>
-	</servlet>
 
-	<!-- Mapping URL cho Servlet -->
 	<servlet-mapping>
 		<servlet-name>ProductSearchServlet</servlet-name>
 		<url-pattern>/ProductSearchServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SendMailServlet</servlet-name>
+		<url-pattern>/SendMailServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
 </web-app>
 </element>

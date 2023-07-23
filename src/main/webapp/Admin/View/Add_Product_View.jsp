@@ -73,7 +73,11 @@
 							</div>
 							<div class="form-group">
 								<label for="image">Thông Tin Sản Phẩm</label>
+<<<<<<< HEAD
 								<textarea name="info" class="form-control"
+=======
+								<textarea  name="info" class="form-control"
+>>>>>>> origin/master
 									required></textarea>
 							</div>
 
