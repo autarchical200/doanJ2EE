@@ -12,7 +12,7 @@ if (session.getAttribute("username") != null) {
 	}
 } else {
 	// Nếu không tồn tại user, đưa về trang login
-	response.sendRedirect("../login/loginView.jsp");
+	response.sendRedirect("../login/loginView.	jsp");
 }
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -34,15 +34,10 @@ if (session.getAttribute("username") != null) {
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 <link rel="stylesheet" href="../css/reponsive.css">
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="../css/hover.css">
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 	<%-- Include the header and spanner --%>
@@ -58,6 +53,16 @@ if (session.getAttribute("username") != null) {
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
+	// hien thi  thong bao
+	
+ /*  function validateBtn() {
+	  Swal.fire({
+			icon : 'warning',
+			title : '',
+			text : 'Bạn cần đăng nhập để mua hàng!',
+		});
+} */
+	// hien thi san pham
 		$(document)
 				.ready(
 						function() {
@@ -91,36 +96,14 @@ if (session.getAttribute("username") != null) {
 														products
 																.forEach(function(
 																		product) {
-																	var card = '<div class="col-md-6 col-lg-3 mt-4  hvr-float">'
+																	var card = '<div class="col-md-6 col-lg-3 mt-4 hvr-float">'
 																			+ '<div class="card">'
-																			+ '<form action="../product_detailView.jsp" method="post">'
-																			+ // Đổi thành phương thức POST và sử dụng form
-																			'<input type="hidden" name="img" value="'
-																			+ encodeURIComponent("../img/products/"
-																					+ product.product_image)
-																			+ '">'
-																			+ '<input type="hidden" name="name" value="'
-																			+ encodeURIComponent(product.product_name)
-																			+ '">'
-																			+ '<input type="hidden" name="info" value="'
-																			+ encodeURIComponent(product.product_info)
-																			+ '">'
-																			+ '<input type="hidden" name="price" value="'
-																			+ encodeURIComponent(product.price)
-																			+ '">'
-																			+ '<input type="hidden" name="discountedPrice" value="'
-																			+ encodeURIComponent(product.discounted_price)
-																			+ '">'
-																			+ '<a href="javascript:;" onclick="this.parentNode.submit(); return false;">'
-																			+ '<img src="../img/products/' + product.product_image + '" class="card-img-top" alt="Product Image">'
-																			+ '</a>'
-																			+ '</form>'
+																			+ '<a href="../product_detailView.jsp?productId='
+																			+ product.product_id
+																			+ '"><img src="../img/products/' + product.product_image + '" class="card-img-top" alt="Product Image"> </a>'
 																			+ '<div class="card-body">'
 																			+ '<h5 class="card-title">'
-																			+ '<a href="javascript:;" onclick="this.parentNode.submit(); return false;">'
-																			+ // Gọi hàm submit form khi click vào link
-																			product.product_name
-																			+ '</a>'
+																			+ product.product_name
 																			+ '</h5>'
 																			+ '<p class="card-text">'
 																			+ product.product_info
@@ -135,7 +118,9 @@ if (session.getAttribute("username") != null) {
 																			+ product.price
 																			+ '</p>'
 																			+ '</div>'
-																			+ '<a href="javascript:;" onclick="this.parentNode.submit(); return false;" class="btn btn-primary">Xem chi tiết</a>'
+																			+
+																			// Thêm liên kết đến trang chi tiết sản phẩm với mã sản phẩm tương ứng
+																			'<a  class="btn btn-success" onclick="validateBtn()">Mua ngay</a>'
 																			+ '</div>'
 																			+ '</div>'
 																			+ '</div>';
@@ -153,6 +138,17 @@ if (session.getAttribute("username") != null) {
 												});
 									});
 						});
+						//scirpt de tim kiem
+						$("#searchForm").submit(function(event) {
+    event.preventDefault();
+    var searchKeyword = $(this).find("input[name='search']").val();
+    if (searchKeyword.trim() !== "") {
+        // Chuyển hướng đến trang product_search.jsp với từ khóa tìm kiếm là tham số productName trên URL
+        var searchURL = "../product_search.jsp?productName=" + encodeURIComponent(searchKeyword);
+        window.location.href = searchURL;
+    }
+});
+
 	</script>
 
 	<%-- Include the footer --%>
