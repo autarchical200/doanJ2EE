@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>doanJ2EE</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<context-param>
+		<param-name>dbServer</param-name>
+		<param-value>mysql</param-value>
+	</context-param>
+	<context-param>
+		<param-name>dbAddress</param-name>
+		<param-value>localhost</param-value>
+	</context-param>
+	<context-param>
+		<param-name>dbPort</param-name>
+		<param-value>3306</param-value>
+	</context-param>
+	<context-param>
+		<param-name>database</param-name>
+		<param-value>doanwebsite</param-value>
+	</context-param>
+	<context-param>
+		<param-name>username</param-name>
+		<param-value>root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>password</param-name>
+		<param-value>Hung0976661824</param-value>
+	</context-param>
+	<context-param>
+		<param-name>dbDriver</param-name>
+		<param-value>com.cj.mysql.jdbc.Driver</param-value>
+	</context-param>
+	<servlet>
+<<<<<<< HEAD
+		<servlet-name>SendMailServlet</servlet-name>
+		<servlet-class>pxu.edu.vn.SendMail.SendMailServlet</servlet-class>
+=======
+		<servlet-name>ProductDetailServlet</servlet-name>
+		<servlet-class>pxu.edu.vn.product.ProductDetailServlet</servlet-class>
+>>>>>>> refs/heads/Hung
+	</servlet>
+
+	<!-- Mapping URL cho Servlet -->
+	<servlet-mapping>
+<<<<<<< HEAD
+		<servlet-name>SendMailServlet</servlet-name>
+		<url-pattern>/SendMailServlet</url-pattern>
+=======
+		<servlet-name>ProductDetailServlet</servlet-name>
+		<url-pattern>/ProductDetailServlet</url-pattern>
+	</servlet-mapping>
+		<servlet>
+		<servlet-name>ProductSearchServlet</servlet-name>
+		<servlet-class>pxu.edu.vn.product.ProductSearchServlet</servlet-class>
+	</servlet>
+
+	<!-- Mapping URL cho Servlet -->
+	<servlet-mapping>
+		<servlet-name>ProductSearchServlet</servlet-name>
+		<url-pattern>/ProductSearchServlet</url-pattern>
+>>>>>>> refs/heads/Hung
+	</servlet-mapping>
+</web-app>
+</element>
