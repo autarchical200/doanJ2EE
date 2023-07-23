@@ -36,8 +36,8 @@ public class ProductModel {
                 product.setProduct_name(rs.getString(2));
                 product.setCategory_id(rs.getInt(3));
                 product.setBrand_id(rs.getInt(4));
-                product.setPrice(rs.getDouble(5));
-                product.setDiscounted_price(rs.getDouble(6));
+                product.setPrice(rs.getLong(5));
+                product.setDiscounted_price(rs.getLong(6));
                 product.setProduct_image(rs.getString(7));
                 product.setProduct_info(rs.getString(8));
                 lst.add(product);
@@ -84,8 +84,8 @@ public class ProductModel {
 				product.setProduct_name(rs.getString("product_name"));
 				product.setCategory_id(rs.getInt("category_id"));
 				product.setBrand_id(rs.getInt("brand_id"));
-				product.setPrice(rs.getDouble("price"));
-				product.setDiscounted_price(rs.getDouble("discounted_price"));
+				product.setPrice(rs.getLong("price"));
+				product.setDiscounted_price(rs.getLong("discounted_price"));
 				product.setProduct_image(rs.getString("product_image"));
 				product.setProduct_info(rs.getString("product_info"));
 				lst.add(product);
@@ -125,8 +125,8 @@ public class ProductModel {
 			pstmt.setString(1, product.getProduct_name());
 			pstmt.setInt(2, product.getCategory_id());
 			pstmt.setInt(3, product.getBrand_id());
-			pstmt.setDouble(4, product.getPrice());
-			pstmt.setDouble(5, product.getDiscounted_price());
+			pstmt.setLong(4, product.getPrice());
+			pstmt.setLong(5, product.getDiscounted_price());
 			pstmt.setString(6, product.getProduct_image());
 			pstmt.setString(7, product.getProduct_info());
 			pstmt.executeUpdate();
@@ -161,8 +161,8 @@ public class ProductModel {
 			pstmt.setString(1, product.getProduct_name());
 			pstmt.setInt(2, product.getCategory_id());
 			pstmt.setInt(3, product.getBrand_id());
-			pstmt.setDouble(4, product.getPrice());
-			pstmt.setDouble(5, product.getDiscounted_price());
+			pstmt.setLong(4, product.getPrice());
+			pstmt.setLong(5, product.getDiscounted_price());
 			pstmt.setString(6, product.getProduct_image());
 			pstmt.setString(7, product.getProduct_info());
 			pstmt.setInt(8, product.getProduct_id());
@@ -234,8 +234,8 @@ public class ProductModel {
 				product.setProduct_name(rs.getString("product_name"));
 				product.setCategory_id(rs.getInt("category_id"));
 				product.setBrand_id(rs.getInt("brand_id"));
-				product.setPrice(rs.getDouble("price"));
-				product.setDiscounted_price(rs.getDouble("discounted_price"));
+				product.setPrice(rs.getLong("price"));
+				product.setDiscounted_price(rs.getLong("discounted_price"));
 				product.setProduct_image(rs.getString("product_image"));
 				product.setProduct_info(rs.getString("product_info"));
 				return product;
