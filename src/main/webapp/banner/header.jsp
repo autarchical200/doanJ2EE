@@ -83,7 +83,7 @@ boolean isLoggedIn = (username != null);
 							if (isLoggedIn) {
 							%>
 							<!-- Hiển thị chào username và nút đăng xuất -->
-							<span class="nav-item nav-link me-4">Chào <%=username%>!
+							<span class="nav-item nav-link me-4 text-light">Chào <%=username%> <i class="bi bi-person-check"></i>
 							</span> <a href="<%=headerBasePath%>/logout.jsp"
 								class="nav-item nav-link me-4"> <i
 								class="bi bi-box-arrow-right"></i> Đăng xuất
