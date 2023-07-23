@@ -35,7 +35,7 @@
 <body>
 	<%@ include file="../banner/header.jsp"%>
 	<div class="login-form">
-		<form action="RegisterController.jsp" method="post"
+		<form action="../SendMailServlet" method="post"
 			onsubmit="return validateForm()">
 			<input type="hidden" name="action" value="add">
 			<section class="vh-80">
@@ -56,7 +56,7 @@
 												tài khoản</label> <input type="text"
 												class="form-control form-control-xl" name="username"
 												id="username" placeholder="Nhập tên tài khoản của bạn..."
-												onblur="validateUsername()">
+												onblur="checkUsernameExist(); validateUsername();">
 											<div id="usernameError" class="invalid-feedback"></div>
 										</div>
 										<!-- Mật khẩu -->
@@ -86,7 +86,7 @@
 										<div class="form-outline form-white mb-4">
 											<label class="form-label d-flex" for="email">Email</label> <input
 												type="email" class="form-control form-control-xl"
-												name="email" id="email" placeholder="Nhập email..."
+												name="email" id="emailInput" placeholder="Nhập email..."
 												onblur="validateField('email')">
 										</div>
 										<!-- Nút đăng ký -->
@@ -152,11 +152,9 @@
             }
         }
 
-        function checkUsernameExist() {
-            if (!isUsernameValid) {
-                return;
-            }
+        var isUsernameExist = false; // Biến để kiểm tra username đã tồn tại hay chưa
 
+        function checkUsernameExist() {
             var username = document.getElementById("username").value;
             var usernameError = document.getElementById("usernameError");
 
@@ -173,6 +171,7 @@
                                 text: 'Tên tài khoản đã tồn tại !!!',
                                 confirmButtonText: 'Đóng'
                             });
+                            usernameError.textContent = "Tên tài khoản đã tồn tại!";
                             usernameError.classList.add("invalid-feedback");
                             document.getElementById("username").classList.add("is-invalid");
                             isUsernameExist = true;
@@ -189,9 +188,9 @@
                 }
             };
 
-            xhr.open("GET", "check_username.jsp", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.send("username=" + encodeURIComponent(username));
+            xhr.open("POST", "../CheckUsernameServlet", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+            xhr.send("action=add&username=" + encodeURIComponent(username));
         }
 
         function validateField(fieldName) {
@@ -291,16 +290,7 @@
                 return false;
             }
 
-            // Thêm thông báo thành công vào vị trí cuối hàm validateForm()
-            Swal.fire({
-                icon: 'success',
-                title: 'Đăng ký thành công!',
-                text: 'Bạn đã đăng ký tài khoản thành công.',
-                confirmButtonText: 'Đóng'
-            });
-
-            // Để chắc chắn rằng form không được submit ngay lập tức sau khi hiển thị thông báo
-            return false;
+            return true;
         }
 
         function isValidPhone(phone) {
@@ -316,7 +306,6 @@
             return emailRegex.test(email);
         }
     </script>
-
 
 </body>
 </html>

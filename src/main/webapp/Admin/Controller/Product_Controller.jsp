@@ -5,7 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page
-	import="java.io.*,java.util.*,javax.servlet.*,javax.servlet.http.*"%>
+	import="java.io.*,java.util.*"%>
 <%@ page
 	import="pxu.edu.vn.brand.brandModel,pxu.edu.vn.product.ProductModel,java.util.*,com.google.gson.Gson, pxu.edu.vn.product.Product,pxu.edu.vn.brand.brand"%>
 <%@ page import="java.text.SimpleDateFormat"%>

@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="javax.servlet.*"%>
-<%@ page import="javax.servlet.http.*"%>
 <%@ page import="pxu.edu.vn.dao.DBConnection"%>
-
 <%
     // Lấy thông tin người dùng từ biểu mẫu đăng nhập
     String username = request.getParameter("username");
