@@ -185,7 +185,55 @@ public class ProductModel {
 			}
 		}
 	}
+	 public static List<Product> getProductsByName(String productName) throws Exception {
+	        List<Product> productList = new ArrayList<>();
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
 
+	        try {
+	            conn = DBConnection.getConnection();
+
+	            // Tìm kiếm các sản phẩm có tên chứa productName (sử dụng "LIKE" trong câu truy vấn SQL)
+	            String sql = "SELECT * FROM products WHERE product_name LIKE ?";
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setString(1, "%" + productName + "%");
+	            rs = pstmt.executeQuery();
+	            while (rs.next()) {
+	                Product product = new Product();
+	                product.setProduct_id(rs.getInt("product_id"));
+	                product.setProduct_name(rs.getString("product_name"));
+	                product.setCategory_id(rs.getInt("category_id"));
+	                product.setBrand_id(rs.getInt("brand_id"));
+	                product.setPrice(rs.getDouble("price"));
+	                product.setDiscounted_price(rs.getDouble("discounted_price"));
+	                product.setProduct_image(rs.getString("product_image"));
+	                product.setProduct_info(rs.getString("product_info"));
+	                productList.add(product);
+	            }
+	        } catch (SQLException e) {
+	            // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
+	            throw new Exception("Lỗi khi lấy dữ liệu từ cơ sở dữ liệu", e);
+	        } finally {
+	            // Đảm bảo đóng kết nối và giải phóng tài nguyên sau khi sử dụng xong
+	            try {
+	                if (rs != null) {
+	                    rs.close();
+	                }
+	                if (pstmt != null) {
+	                    pstmt.close();
+	                }
+	                if (conn != null) {
+	                    conn.close();
+	                }
+	            } catch (SQLException ex) {
+	                // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
+	                throw new Exception("Lỗi khi đóng kết nối", ex);
+	            }
+	        }
+	        return productList;
+	    }
+	
 	// Hàm xóa sản phẩm theo ID
 	public static void deleteProduct(int productId) throws Exception {
 		Connection conn = null;

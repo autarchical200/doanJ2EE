@@ -46,5 +46,15 @@
 		<servlet-name>ProductDetailServlet</servlet-name>
 		<url-pattern>/ProductDetailServlet</url-pattern>
 	</servlet-mapping>
+		<servlet>
+		<servlet-name>ProductSearchServlet</servlet-name>
+		<servlet-class>pxu.edu.vn.product.ProductSearchServlet</servlet-class>
+	</servlet>
+
+	<!-- Mapping URL cho Servlet -->
+	<servlet-mapping>
+		<servlet-name>ProductSearchServlet</servlet-name>
+		<url-pattern>/ProductSearchServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
 </element>

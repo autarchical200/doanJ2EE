@@ -138,6 +138,17 @@ if (session.getAttribute("username") != null) {
 												});
 									});
 						});
+						//scirpt de tim kiem
+						$("#searchForm").submit(function(event) {
+    event.preventDefault();
+    var searchKeyword = $(this).find("input[name='search']").val();
+    if (searchKeyword.trim() !== "") {
+        // Chuyển hướng đến trang product_search.jsp với từ khóa tìm kiếm là tham số productName trên URL
+        var searchURL = "../product_search.jsp?productName=" + encodeURIComponent(searchKeyword);
+        window.location.href = searchURL;
+    }
+});
+
 	</script>
 
 	<%-- Include the footer --%>

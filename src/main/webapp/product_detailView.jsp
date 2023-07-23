@@ -323,6 +323,7 @@ if (session.getAttribute("username") != null) {
 										}
 									});
 						});
+		
 	</script>
 </body>
 

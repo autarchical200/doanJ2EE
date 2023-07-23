@@ -139,6 +139,7 @@ if (session.getAttribute("username") != null) {
 												});
 									});
 						});
+	
 	</script>
 
 	<%-- Include the footer --%>
