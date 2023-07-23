@@ -7,8 +7,8 @@ public class Product {
 	private String product_name;
 	private int category_id;
 	private int brand_id;
-	private double price;
-	private double discounted_price;
+	private long price;
+	private long discounted_price;
 	private String product_image;
 	private String product_info;
 	private String brand_name; // Thêm trường brand_name vào lớp Product
@@ -29,8 +29,8 @@ public class Product {
 
 	
 
-	public Product(int product_id, String product_name, int category_id, int brand_id, double price,
-			double discounted_price, String product_image, String product_info) {
+	public Product(int product_id, String product_name, int category_id, int brand_id, long price,
+			long discounted_price, String product_image, String product_info) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
@@ -74,19 +74,19 @@ public class Product {
 		this.brand_id = brand_id;
 	}
 
-	public double getPrice() {
+	public long getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 
-	public double getDiscounted_price() {
+	public long getDiscounted_price() {
 		return discounted_price;
 	}
 
-	public void setDiscounted_price(double discounted_price) {
+	public void setDiscounted_price(long discounted_price) {
 		this.discounted_price = discounted_price;
 	}
 

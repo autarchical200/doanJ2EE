@@ -73,7 +73,11 @@
 							</div>
 							<div class="form-group">
 								<label for="image">Thông Tin Sản Phẩm</label>
+<<<<<<< HEAD
 								<textarea name="info" class="form-control"
+=======
+								<textarea  name="info" class="form-control"
+>>>>>>> 54d4232b57cbe80de1d1c000159196dc222baa70
 									required></textarea>
 							</div>
 

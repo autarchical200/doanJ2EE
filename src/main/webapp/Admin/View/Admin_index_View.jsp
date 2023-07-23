@@ -1,4 +1,7 @@
 
+<%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%
 // Kiểm tra session, nếu đã tồn tại user thì kiểm tra role và điều hướng trang
 if (session.getAttribute("username") != null) {
@@ -279,6 +282,8 @@ if (session.getAttribute("username") != null) {
 
 								<%
 								int totalRevenue = 0;
+								int expense =500000000;
+								int target = 1000000000;
 								Connection conn = null;
 								PreparedStatement stmt = null;
 								ResultSet rs = null;
@@ -514,43 +519,39 @@ if (session.getAttribute("username") != null) {
 									<div class="row">
 
 										<%
-										JSONArray chartData = new JSONArray(); // Khai báo biến chartData là một JSONArray để lưu trữ dữ liệu
+										String sql = "SELECT YEAR(order_date) AS year, MONTH(order_date) AS month, SUM(total_amount) AS total_amounts"
+												+ " FROM orders" + " GROUP BY YEAR(order_date), MONTH(order_date)"
+												+ " ORDER BY YEAR(order_date), MONTH(order_date)";
+
+										List<Map<String, Object>> chartData = new ArrayList<>(); // List để lưu trữ dữ liệu
 
 										try {
 											conn = DBConnection.getConnection();
+											stmt = conn.prepareStatement(sql);
+											rs = stmt.executeQuery(sql);
 
-											String sql = "SELECT YEAR(order_date) AS year, MONTH(order_date) AS month, SUM(total_amount) AS total_amounts "
-											+ "FROM orders " + "GROUP BY YEAR(order_date), MONTH(order_date) "
-											+ "ORDER BY YEAR(order_date), MONTH(order_date)";
-											Statement stmtStatement = conn.createStatement();
-											ResultSet rsResultSet = stmt.executeQuery(sql);
+											while (rs.next()) {
+												int year = rs.getInt("year");
+												int month = rs.getInt("month");
+												double totalAmount = rs.getDouble("total_amounts");
 
-											while (rsResultSet.next()) {
-												int year = rsResultSet.getInt("year");
-												int month = rsResultSet.getInt("month");
-												double totalAmount = rsResultSet.getDouble("total_amounts");
-
-												JSONObject data = new JSONObject();
+												Map<String, Object> data = new HashMap<>();
 												data.put("label", month + "/" + year);
 												data.put("value", totalAmount);
-												chartData.put(data);
+
+												chartData.add(data);
 											}
-
-											// Đóng ResultSet và Statement
-											rsResultSet.close();
-											stmtStatement.close();
-
-											// Ghi biến chartData vào phạm vi của thẻ script
-
 										} catch (SQLException e) {
 											e.printStackTrace();
+											out.println("Lỗi truy vấn: " + e.getMessage());
 										} finally {
-											if (conn != null) {
-												try {
-											conn.close();
-												} catch (SQLException e) {
-											e.printStackTrace();
-												}
+											try {
+												if (rs != null)
+											rs.close();
+												if (stmt != null)
+											stmt.close();
+											} catch (SQLException e) {
+												e.printStackTrace();
 											}
 										}
 										%>
@@ -570,37 +571,151 @@ if (session.getAttribute("username") != null) {
 											<p class="text-center">
 												<strong>Mục Tiêu Hoàn Thành</strong>
 											</p>
+
+											<%
+											double tongDoanhThu = 0;
+											double tiLeHoanThanh = 0;
+											String formattedTongDoanhThu = "";
+
+											try {
+												// Lấy dữ liệu doanh thu từ MySQL
+												String squery = "SELECT SUM(total_amount) AS tong_doanh_thu FROM orders";
+
+												conn = DBConnection.getConnection();
+												stmt = conn.prepareStatement(squery);
+												rs = stmt.executeQuery(squery);
+
+												if (rs.next()) {
+													tongDoanhThu = rs.getDouble("tong_doanh_thu");
+												}
+
+												// Tính toán phần trăm hoàn thành
+												tiLeHoanThanh = (tongDoanhThu / 1000000000) * 100;
+												tiLeHoanThanh = Math.min(100, tiLeHoanThanh); // Đảm bảo giá trị không vượt quá 100%
+
+												// Định dạng số tiền thành chuỗi có dấu phẩy ngăn cách hàng nghìn
+												java.text.NumberFormat formatter = new java.text.DecimalFormat("#,###");
+												formattedTongDoanhThu = formatter.format(tongDoanhThu);
+											} catch (SQLException e) {
+												e.printStackTrace();
+												out.println("Lỗi truy vấn: " + e.getMessage());
+											}
+											%>
+
 											<div class="progress-group">
-												Tổng Doanh Thu <span class="float-right"><b>160</b>/200</span>
+												Doanh Thu <span class="float-right"><b><%=formattedTongDoanhThu%></b>/1,000,000,000</span>
 												<div class="progress progress-sm">
-													<div class="progress-bar bg-primary" style="width: 80%"></div>
+													<div class="progress-bar bg-primary"
+														style="width: <%=tiLeHoanThanh%>%"></div>
 												</div>
 											</div>
 											<!-- /.progress-group -->
 
+											<%
+											int soLuongHoaDon = 0;
+											double tiLeHoanThanhHoaDon = 0;
+
+											try {
+												// Lấy tổng số lượng hóa đơn từ MySQL
+												String squery = "SELECT COUNT(*) AS so_luong_hoa_don FROM orders";
+
+												conn = DBConnection.getConnection();
+												stmt = conn.prepareStatement(squery);
+												rs = stmt.executeQuery(squery);
+
+												if (rs.next()) {
+													soLuongHoaDon = rs.getInt("so_luong_hoa_don");
+												}
+
+												// Tính toán phần trăm hoàn thành
+												tiLeHoanThanhHoaDon = (soLuongHoaDon / 400.0) * 100;
+												tiLeHoanThanhHoaDon = Math.min(100, tiLeHoanThanhHoaDon);
+											} catch (SQLException e) {
+												e.printStackTrace();
+												out.println("Lỗi truy vấn: " + e.getMessage());
+											}
+											%>
+
 											<div class="progress-group">
-												Tổng Hóa Đơn <span class="float-right"><b>310</b>/400</span>
+												Tổng Hóa Đơn <span class="float-right"><b><%=soLuongHoaDon%></b>/400</span>
 												<div class="progress progress-sm">
-													<div class="progress-bar bg-danger" style="width: 75%"></div>
+													<div class="progress-bar bg-danger"
+														style="width: <%=tiLeHoanThanhHoaDon%>%"></div>
 												</div>
 											</div>
 
+
 											<!-- /.progress-group -->
+											<%
+											int soLuongKhachHang = 0;
+											double tiLeHoanThanhKhachHang = 0;
+
+											try {
+												// Lấy tổng số lượng khách hàng từ MySQL
+												String squery = "SELECT COUNT(*) AS so_luong_khach_hang FROM users WHERE role='customer'";
+
+												conn = DBConnection.getConnection();
+												stmt = conn.prepareStatement(squery);
+												rs = stmt.executeQuery(squery);
+
+												if (rs.next()) {
+													soLuongKhachHang = rs.getInt("so_luong_khach_hang");
+												}
+
+												// Tính toán phần trăm hoàn thành
+												tiLeHoanThanhKhachHang = (soLuongKhachHang / 800.0) * 100;
+												tiLeHoanThanhKhachHang = Math.min(100, tiLeHoanThanhKhachHang);
+											} catch (SQLException e) {
+												e.printStackTrace();
+												out.println("Lỗi truy vấn: " + e.getMessage());
+											}
+											%>
+
 											<div class="progress-group">
 												<span class="progress-text">Tổng Khách Hàng</span> <span
-													class="float-right"><b>480</b>/800</span>
+													class="float-right"><b><%=soLuongKhachHang%></b>/800</span>
 												<div class="progress progress-sm">
-													<div class="progress-bar bg-success" style="width: 60%"></div>
+													<div class="progress-bar bg-success"
+														style="width: <%=tiLeHoanThanhKhachHang%>%"></div>
 												</div>
 											</div>
 
+
 											<!-- /.progress-group -->
+											<%
+											int tongSoLuongSanPhamBanRa = 0;
+											double tiLeHoanThanhSanPham = 0;
+
+											try {
+												// Lấy tổng số lượng sản phẩm đã bán ra từ MySQL
+												String squery = "SELECT SUM(quantity) AS tong_so_luong FROM order_details";
+												
+
+												conn = DBConnection.getConnection();
+												stmt = conn.prepareStatement(squery);
+												rs = stmt.executeQuery(squery);
+
+												if (rs.next()) {
+													tongSoLuongSanPhamBanRa = rs.getInt("tong_so_luong");
+												}
+
+												// Tính toán phần trăm hoàn thành
+												tiLeHoanThanhSanPham = (tongSoLuongSanPhamBanRa / 500.0) * 100;
+												tiLeHoanThanhSanPham = Math.min(100, tiLeHoanThanhSanPham);
+											} catch (SQLException e) {
+												e.printStackTrace();
+												out.println("Lỗi truy vấn: " + e.getMessage());
+											}
+											%>
+
 											<div class="progress-group">
-												Tỏng Sản Phẩm Bán Ra <span class="float-right"><b>250</b>/500</span>
+												Tổng Sản Phẩm Bán Ra <span class="float-right"><b><%=tongSoLuongSanPhamBanRa%></b>/500</span>
 												<div class="progress progress-sm">
-													<div class="progress-bar bg-warning" style="width: 50%"></div>
+													<div class="progress-bar bg-warning"
+														style="width: <%=tiLeHoanThanhSanPham%>%"></div>
 												</div>
 											</div>
+
 											<!-- /.progress-group -->
 										</div>
 										<!-- /.col -->
@@ -612,7 +727,7 @@ if (session.getAttribute("username") != null) {
 									<div class="row">
 										<div class="col-sm-3 col-6">
 											<div class="description-block border-right">
-												<h5 class="description-header">$35,210.43</h5>
+												<h5 class="description-header"><%=totalRevenue%></h5>
 												<span class="description-text">Tổng Doanh Thu</span>
 											</div>
 											<!-- /.description-block -->
@@ -620,7 +735,7 @@ if (session.getAttribute("username") != null) {
 										<!-- /.col -->
 										<div class="col-sm-3 col-6">
 											<div class="description-block border-right">
-												<h5 class="description-header">$10,390.90</h5>
+												<h5 class="description-header"><%=expense%></h5>
 												<span class="description-text">Kinh Phí</span>
 											</div>
 											<!-- /.description-block -->
@@ -629,16 +744,16 @@ if (session.getAttribute("username") != null) {
 										<div class="col-sm-3 col-6">
 											<div class="description-block border-right">
 
-												<h5 class="description-header">$24,813.53</h5>
-												<span class="description-text">Tổng Lợi Nhuận</span>
+												<h5 class="description-header"><%=totalRevenue-expense%></h5>
+												<span class="description-text">Lợi Nhuận</span>
 											</div>
 											<!-- /.description-block -->
 										</div>
 										<!-- /.col -->
 										<div class="col-sm-3 col-6">
 											<div class="description-block">
-												<h5 class="description-header">1200</h5>
-												<span class="description-text">GOAL COMPLETIONS</span>
+												<h5 class="description-header"><%=target%></h5>
+												<span class="description-text">Hoàn Thành Mục Tiêu</span>
 											</div>
 											<!-- /.description-block -->
 										</div>
@@ -676,63 +791,47 @@ if (session.getAttribute("username") != null) {
 		</footer>
 	</div>
 	<!-- ./wrapper -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+
+	<script src="../../plugins/chart.js/Chart.min.js"></script>
+	<script src="../../plugins/jquery/jquery.min.js"></script>
+
 
 	<script>
-		var chartData =
-	<%=chartData%>
-		;
-		var labels = [];
-		var values = [];
-		chartData.forEach(function(data) {
-			labels.push(data.label);
-			values.push(data.value);
-		});
+        // Biến chartData chứa dữ liệu biểu đồ
+        var chartData = <%=new org.json.JSONArray(chartData)%>;
 
-		var ctx = document.getElementById('myChart').getContext('2d');
-		var myChart = new Chart(ctx, {
-			type : 'line',
-			data : {
-				labels : labels,
-				datasets : [ {
-					label : 'Tổng số tiền theo tháng',
-					data : values,
-					fill : true,
-					backgroundColor : 'rgba(75, 192, 192, 0.2)',
-					borderColor : 'rgba(75, 192, 192, 1)',
-					borderWidth : 1
-				} ]
-			},
-			options : {
-				scales : {
-					y : {
-						beginAtZero : true,
-						ticks : {
-							callback : function(value, index, values) {
-								return value.toLocaleString() + 'đ';
-							}
-						}
-					}
-				},
-				plugins : {
-					tooltip : {
-						callbacks : {
-							label : function(context) {
-								var label = context.dataset.label || '';
-								var value = context.parsed.y.toLocaleString()
-										+ 'đ';
-								return label + ': ' + value;
-							}
-						}
-					}
-				}
-			}
-		});
-	</script>
+        // Chuẩn bị dữ liệu để vẽ biểu đồ đường
+        var labels = chartData.map(item => item.label);
+        var values = chartData.map(item => item.value);
+
+        // Vẽ biểu đồ đường bằng Chart.js
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Doanh số',
+                    data: values,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
 	<!-- REQUIRED SCRIPTS -->
 	<!-- jQuery -->
-	<script src="../../plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- overlayScrollbars -->
@@ -742,12 +841,7 @@ if (session.getAttribute("username") != null) {
 	<script src="../../dist/js/adminlte.js"></script>
 	<!-- PAGE PLUGINS -->
 	<!-- jQuery Mapael -->
-	<script src="../../plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-	<script src="../plugins/raphael/raphael.min.js"></script>
-	<script src="../../plugins/jquery-mapael/jquery.mapael.min.js"></script>
-	<script src="../../plugins/jquery-mapael/maps/usa_states.min.js"></script>
 	<!-- ChartJS -->
-	<script src="../../plugins/chart.js/Chart.min.js"></script>
 
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="../../dist/js/pages/dashboard2.js"></script>

@@ -39,10 +39,15 @@
 	<servlet>
 		<servlet-name>ProductDetailServlet</servlet-name>
 		<servlet-class>pxu.edu.vn.product.ProductDetailServlet</servlet-class>
+
+		<servlet-name>SendMailServlet</servlet-name>
+		<servlet-class>pxu.edu.vn.SendMail.SendMailServlet</servlet-class>
+
 	</servlet>
 
 	<!-- Mapping URL cho Servlet -->
 	<servlet-mapping>
+
 		<servlet-name>ProductDetailServlet</servlet-name>
 		<url-pattern>/ProductDetailServlet</url-pattern>
 	</servlet-mapping>
@@ -55,6 +60,10 @@
 	<servlet-mapping>
 		<servlet-name>ProductSearchServlet</servlet-name>
 		<url-pattern>/ProductSearchServlet</url-pattern>
+
+		<servlet-name>SendMailServlet</servlet-name>
+		<url-pattern>/SendMailServlet</url-pattern>
+
 	</servlet-mapping>
 </web-app>
 </element>
