@@ -121,7 +121,7 @@ if (session.getAttribute("username") != null) {
 																			+ '</div>'
 																			+
 																			// Thêm liên kết đến trang chi tiết sản phẩm với mã sản phẩm tương ứng
-																			'<a  class="btn btn-success" onclick="validateBtn()">Mua ngay</a>'
+																			'<a  class="btn text-light btn-danger"  onclick="validateBtn()"><i class="bi bi-bag-plus-fill"></i>Mua ngay</a>'
 																			+ '</div>'
 																			+ '</div>'
 																			+ '</div>';

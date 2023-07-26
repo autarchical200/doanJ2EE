@@ -45,7 +45,7 @@
 									<tr class="text-center">
 										<th><input type="checkbox" id="selectAll"></th>
 										<th>ID Hóa Đơn</th>
-										<th>Tên Khách Hàng</th>
+										<th>ID Khách Hàng</th>
 										<th>Ngày Mua</th>
 										<th>Tổng Tiền</th>
 										<th>Trạng Thái Thanh Toán</th>
@@ -144,3 +144,4 @@
 					});
 </script>
 <jsp:include page="inc/footer.jsp" />
+ 

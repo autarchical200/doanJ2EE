@@ -38,9 +38,9 @@ if (username == null) {
                     </a>
                 </div>
                 <div class="navbar__cart align-items-center flex-column">
-                    <a  href="<%=headerBasePath%>/cart.jsp" onclick="showLoginAlert()"> <i class="bi bi-cart-fill"></i>
+                    <a  href="<%=headerBasePath%>/cart/cartView.jsp" onclick="showLoginAlert()"> <i class="bi bi-cart-fill"></i>
                     </a>
-                    <a href="<%=headerBasePath%>/cart.jsp" onclick="showLoginAlert()">Giỏ hàng</a>
+                    <a href="<%=headerBasePath%>/cart/cartView.jsp" onclick="showLoginAlert()">Giỏ hàng</a>
                     <!-- Hiển thị số lượng sản phẩm trong giỏ hàng -->
                     <span class="cart-quantity-counter" id="count_shopping_cart_store"><%= cartQuantity %></span>
                 </div>
@@ -114,7 +114,20 @@ if (username == null) {
             var searchURL = "<%=headerBasePath%>/product_search.jsp?productName=" + encodeURIComponent(searchKeyword);
             window.location.href = searchURL;
         });
-
+        function showLoginAlert() {
+            <% if (!isLoggedIn) { %>
+                // Nếu người dùng chưa đăng nhập, hiển thị thông báo và yêu cầu đăng nhập
+                Swal.fire({
+                    icon: 'warning',
+                    title: '',
+                    text: 'Bạn cần đăng nhập để xem giỏ hàng!',
+                });
+                event.preventDefault();
+            <% } else { %>
+                // Nếu người dùng đã đăng nhập, chuyển hướng đến trang giỏ hàng
+                window.location.href = "<%=headerBasePath%>/cart.jsp";
+            <% } %>
+        }
     </script>
 </body>
 </html>

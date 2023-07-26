@@ -80,7 +80,7 @@ public class send_mail_check extends HttpServlet {
         try {
             conn = DBConnection.getConnection();
             String sql = "INSERT INTO users (username, password, email, phone, full_name, gender, role) " +
-                         "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                         "VALUES (?, md5(?), ?, ?, ?, ?, ?)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, customer.getUsername());
             stmt.setString(2, customer.getPassword());

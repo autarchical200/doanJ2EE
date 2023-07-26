@@ -5,6 +5,8 @@
 <%@ page import="pxu.edu.vn.product.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="pxu.edu.vn.dao.DBConnection"%>
+<%@ page import="pxu.edu.vn.login.PasswordUtil" %> <!-- Thay your.package.name bằng gói chứa lớp PasswordUtil -->
+
 <%
     // Lấy thông tin người dùng từ biểu mẫu đăng nhập
     String username = request.getParameter("username");
@@ -17,10 +19,13 @@
         ResultSet rs = stmt.executeQuery();
 
         if (rs.next()) {
-            String storedPassword = rs.getString("password");
+            String storedPasswordHash = rs.getString("password");
+
+            // Mã hóa mật khẩu người dùng
+            String inputPasswordHash = PasswordUtil.hashPassword(password);
 
             // Kiểm tra mật khẩu
-            if (password.equals(storedPassword)) {
+            if (inputPasswordHash != null && inputPasswordHash.equals(storedPasswordHash)) {
                 // Lưu thông tin người dùng vào session
                 session.setAttribute("username", rs.getString("username"));
                 session.setAttribute("role", rs.getString("role"));

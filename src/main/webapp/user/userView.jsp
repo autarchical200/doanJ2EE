@@ -144,9 +144,9 @@ if (session.getAttribute("username") != null) {
 																			+ '</div>'
 																			+
 																			// Thêm liên kết đến trang chi tiết sản phẩm với mã sản phẩm tương ứng
-																			'<button class="btn btn-success" onclick="addToCart('
+																			'<button class="btn text-light btn-danger"onclick="addToCart('
 																			+ product.product_id
-																			+ ')">Mua ngay</button>'
+																			+ ')"><i class="bi bi-bag-plus-fill"></i>Mua ngay</button>'
 																			+ '</div>'
 																			+ '</div>'
 																			+ '</div>';
@@ -164,19 +164,7 @@ if (session.getAttribute("username") != null) {
 												});
 									});
 						});
-		//scirpt de tim kiem
-		$("#searchForm").submit(
-				function(event) {
-					event.preventDefault();
-					var searchKeyword = $(this).find("input[name='search']")
-							.val();
-					if (searchKeyword.trim() !== "") {
-						// Chuyển hướng đến trang product_search.jsp với từ khóa tìm kiếm là tham số productName trên URL
-						var searchURL = "../product_search.jsp?productName="
-								+ encodeURIComponent(searchKeyword);
-						window.location.href = searchURL;
-					}
-				});
+	
 	</script>
 
 	<%-- Include the footer --%>

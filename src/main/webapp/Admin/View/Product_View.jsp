@@ -117,7 +117,7 @@
             {
               data: null,
               render: function(data, type, full, meta) {
-                return '<img src="' + full.product_image + '" alt="Hình ảnh sản phẩm" style="max-width: 100px; max-height: 100px;">';
+                return '<img src="../../img/products/' + full.product_image + '" alt="Hình ảnh sản phẩm" style="max-width: 100px; max-height: 100px;">';
               },
             },
             { data: "product_info" },

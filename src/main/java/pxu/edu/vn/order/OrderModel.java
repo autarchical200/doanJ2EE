@@ -62,10 +62,11 @@ public class OrderModel {
 	        conn = DBConnection.getConnection();
 	        stmt = conn.createStatement();
 	        String sql = "INSERT INTO orders (user_id, order_date, total_amount, status) VALUES (" +
-	                     order.getUser_id() + ", '" +
-	                     order.getOrder_date() + "', " +
-	                     order.getTotal_amount() + ", '" +
-	                     order.getStatus() + "')";
+                    order.getUser_id() + ", '" +
+                    order.getOrder_date() + "', " +
+                    order.getTotal_amount() + ", '" +
+                    order.getStatus() + "')";
+
 	        stmt.executeUpdate(sql);
 	    } catch (SQLException e) {
 	        // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
