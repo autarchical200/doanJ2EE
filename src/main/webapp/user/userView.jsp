@@ -53,16 +53,28 @@ if (session.getAttribute("username") != null) {
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
-	// hien thi  thong bao
-	
- /*  function validateBtn() {
-	  Swal.fire({
-			icon : 'warning',
-			title : '',
-			text : 'Bạn cần đăng nhập để mua hàng!',
-		});
-} */
-	// hien thi san pham
+		function addToCart(productId) {
+			$.ajax({
+				url : "../CartServlet?productId="+productId, // Đường dẫn đến Servlet "CartServlet"
+				type : "GET", // Phương thức POST để thực hiện thêm sản phẩm vào giỏ hàng, // Gửi ID sản phẩm vào request
+				dataType : "json",
+				success : function(data) {
+					if (data.success) {
+						// Show a success message to the user (optional)
+						alert("Product added to cart!");
+						 location.reload();
+					} else {
+						// Show an error message to the user (optional)
+						alert("Failed to add product to cart!");
+					}
+				},
+				error : function() {
+					// Show an error message to the user (optional)
+					alert("Failed to add product to cart!");
+				},
+			});
+		}
+		// hien thi san pham
 		$(document)
 				.ready(
 						function() {
@@ -120,7 +132,9 @@ if (session.getAttribute("username") != null) {
 																			+ '</div>'
 																			+
 																			// Thêm liên kết đến trang chi tiết sản phẩm với mã sản phẩm tương ứng
-																			'<a  class="btn btn-success" onclick="validateBtn()">Mua ngay</a>'
+																			'<button class="btn btn-success" onclick="addToCart('
+																			+ product.product_id
+																			+ ')">Mua ngay</button>'
 																			+ '</div>'
 																			+ '</div>'
 																			+ '</div>';
@@ -138,17 +152,19 @@ if (session.getAttribute("username") != null) {
 												});
 									});
 						});
-						//scirpt de tim kiem
-						$("#searchForm").submit(function(event) {
-    event.preventDefault();
-    var searchKeyword = $(this).find("input[name='search']").val();
-    if (searchKeyword.trim() !== "") {
-        // Chuyển hướng đến trang product_search.jsp với từ khóa tìm kiếm là tham số productName trên URL
-        var searchURL = "../product_search.jsp?productName=" + encodeURIComponent(searchKeyword);
-        window.location.href = searchURL;
-    }
-});
-
+		//scirpt de tim kiem
+		$("#searchForm").submit(
+				function(event) {
+					event.preventDefault();
+					var searchKeyword = $(this).find("input[name='search']")
+							.val();
+					if (searchKeyword.trim() !== "") {
+						// Chuyển hướng đến trang product_search.jsp với từ khóa tìm kiếm là tham số productName trên URL
+						var searchURL = "../product_search.jsp?productName="
+								+ encodeURIComponent(searchKeyword);
+						window.location.href = searchURL;
+					}
+				});
 	</script>
 
 	<%-- Include the footer --%>
