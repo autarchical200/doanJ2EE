@@ -53,27 +53,39 @@ if (session.getAttribute("username") != null) {
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
-		function addToCart(productId) {
-			$.ajax({
-				url : "../CartServlet?productId="+productId, // Đường dẫn đến Servlet "CartServlet"
-				type : "GET", // Phương thức POST để thực hiện thêm sản phẩm vào giỏ hàng, // Gửi ID sản phẩm vào request
-				dataType : "json",
-				success : function(data) {
-					if (data.success) {
-						// Show a success message to the user (optional)
-						alert("Product added to cart!");
-						 location.reload();
-					} else {
-						// Show an error message to the user (optional)
-						alert("Failed to add product to cart!");
-					}
-				},
-				error : function() {
-					// Show an error message to the user (optional)
-					alert("Failed to add product to cart!");
-				},
-			});
-		}
+	function addToCart(productId) {
+	    $.ajax({
+	        url: "../CartServlet?productId=" + productId,
+	        type: "GET",
+	        dataType: "json",
+	        success: function (data) {
+	            if (data.success) {
+	                // Show a success message to the user
+	                Swal.fire({
+	                    icon: 'success',
+	                    title: 'Thêm vào giỏ hàng thành công!',
+	                }).then(function () {
+	                    // Reload the page after the user clicks "OK"
+	                    location.reload();
+	                });
+	            } else {
+	                // Show an error message to the user
+	                Swal.fire({
+	                    icon: 'error',
+	                    title: 'Thêm vào giỏ hàng thất bại!',
+	                });
+	            }
+	        },
+	        error: function () {
+	            // Show an error message to the user
+	            Swal.fire({
+	                icon: 'error',
+	                title: 'Thêm vào giỏ hàng thất bại!',
+	            });
+	        },
+	    });
+	}
+
 		// hien thi san pham
 		$(document)
 				.ready(

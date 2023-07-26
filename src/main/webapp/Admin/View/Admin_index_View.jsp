@@ -211,7 +211,7 @@ if (session.getAttribute("username") != null) {
 								</p>
 						</a>
 							<ul class="nav nav-treeview">
-								<li class="nav-item"><a href="Oder_View.jsp"
+								<li class="nav-item"><a href="Order_View.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Hóa Đơn</p>
 								</a></li>

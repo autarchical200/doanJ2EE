@@ -54,34 +54,36 @@ public class OrderModel {
 		return lst;
 	}
 
-	// Hàm Thêm Dữ Liệu
 	public static void insertOrder(Order order) throws Exception {
-		Connection conn = null;
-		Statement stmt = null;
+	    Connection conn = null;
+	    Statement stmt = null;
 
-		try {
-			conn = DBConnection.getConnection();
-			stmt = conn.createStatement();
-			String sql = "INSERT INTO orders (user_id, order_date, total_amount,status) VALUES (" + order.getUser_id()
-					+ ", '" + order.getOrder_date() + "', " + order.getTotal_amount() + "', " + order.getStatus() + ")";
-			stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
-			throw new Exception("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu", e);
-		} finally {
-			// Đảm bảo đóng kết nối và giải phóng tài nguyên sau khi sử dụng xong
-			try {
-				if (stmt != null) {
-					stmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException ex) {
-				// Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
-				throw new Exception("Lỗi khi đóng kết nối", ex);
-			}
-		}
+	    try {
+	        conn = DBConnection.getConnection();
+	        stmt = conn.createStatement();
+	        String sql = "INSERT INTO orders (user_id, order_date, total_amount, status) VALUES (" +
+	                     order.getUser_id() + ", '" +
+	                     order.getOrder_date() + "', " +
+	                     order.getTotal_amount() + ", '" +
+	                     order.getStatus() + "')";
+	        stmt.executeUpdate(sql);
+	    } catch (SQLException e) {
+	        // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
+	        throw new Exception("Lỗi khi thêm dữ liệu vào cơ sở dữ liệu", e);
+	    } finally {
+	        // Đảm bảo đóng kết nối và giải phóng tài nguyên sau khi sử dụng xong
+	        try {
+	            if (stmt != null) {
+	                stmt.close();
+	            }
+	            if (conn != null) {
+	                conn.close();
+	            }
+	        } catch (SQLException ex) {
+	            // Ghi log hoặc ném ra ngoại lệ chứa thông báo lỗi
+	            throw new Exception("Lỗi khi đóng kết nối", ex);
+	        }
+	    }
 	}
 
 	// Hàm Sửa Dữ Liệu

@@ -16,7 +16,7 @@ if (username == null) {
     // Lấy giỏ hàng từ session "cart"
     Map<Integer, CartItem> cart = (Map<Integer, CartItem>) session.getAttribute("cart");
     if (cart != null) {
-        cartQuantity = cart.values().stream().mapToInt(CartItem::getQuantity).sum();
+        cartQuantity = cart.size(); // Count the number of unique products in the cart
     }
 }
 %>
@@ -81,7 +81,7 @@ if (username == null) {
                         <div class="navbar-nav ms-auto">
                             <% if (isLoggedIn) { %>
                                 <!-- Hiển thị chào username và nút đăng xuất -->
-                                <span class="nav-item nav-link me-4 text-light">Chào <%=username%><i class="bi bi-person-check"></i></span>
+                                <span class="nav-item nav-link me-4 text-light"><i class="bi bi-person-check"></i>Chào <%=username%></span>
                                 <a href="<%=headerBasePath%>/logout.jsp" class="nav-item nav-link me-4"> <i class="bi bi-box-arrow-right"></i> Đăng xuất</a>
                             <% } else { %>
                                 <!-- Hiển thị nút đăng nhập và đăng ký -->
