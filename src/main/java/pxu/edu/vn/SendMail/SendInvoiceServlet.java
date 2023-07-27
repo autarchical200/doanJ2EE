@@ -34,7 +34,7 @@ public class SendInvoiceServlet extends HttpServlet {
         sendInvoiceEmail(email, session);
 
         // Chuyển hướng người dùng đến trang cảm ơn hoặc thông báo gửi email thành công
-        response.sendRedirect(request.getContextPath() + "/cart.jsp");
+        response.sendRedirect(request.getContextPath() + "/cart/cart.jsp");
     }
     private String formatMoneyVND(long money) {
         DecimalFormat formatter = new DecimalFormat("###,### VNĐ");

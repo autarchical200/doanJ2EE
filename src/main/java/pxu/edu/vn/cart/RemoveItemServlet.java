@@ -34,6 +34,6 @@ public class RemoveItemServlet extends HttpServlet {
         }
 
         // Redirect the user back to the cart page
-        response.sendRedirect(request.getContextPath() + "/cart.jsp");
+        response.sendRedirect(request.getContextPath() + "/cart/cart.jsp");
     }
 }

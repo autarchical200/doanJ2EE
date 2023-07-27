@@ -36,13 +36,13 @@ if (session.getAttribute("username") != null) {
 	integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-	<%@ include file="banner/header.jsp"%>
+	<%@ include file="../banner/header.jsp"%>
 	<div class="container mt-5">
 		<h2 class="mb-4 pd-4"
 			style="border-bottom: 3px solid black; color: green;">Giỏ hàng</h2>
@@ -81,7 +81,7 @@ if (session.getAttribute("username") != null) {
 					<td><span class="total-price" data-price="<%=totalPrice%>"><%=totalPrice%></span>
 					</td>
 					<td>
-						<form action="RemoveItemServlet" method="post">
+						<form action="../RemoveItemServlet" method="post">
 							<input type="hidden" name="productId"
 								value="<%=product.getProduct_id()%>">
 							<button type="submit" class="btn btn-danger">Xóa</button>
@@ -107,7 +107,7 @@ if (session.getAttribute("username") != null) {
 		</div>
 
 		<!-- Modal -->
-		<form id="sendInvoiceForm" action="SendInvoiceServlet" method="post">
+		<form id="sendInvoiceForm" action="../SendInvoiceServlet" method="post">
 			<div class="modal fade" id="sendInvoiceModal" tabindex="-1"
 				aria-labelledby="emailModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered">
@@ -165,7 +165,7 @@ if (session.getAttribute("username") != null) {
 	<%
 	session.setAttribute("totalAmount", totalAmount);
 	%>
-	<%@ include file="banner/footer.jsp"%>
+	<%@ include file="../banner/footer.jsp"%>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

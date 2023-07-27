@@ -38,9 +38,9 @@ if (username == null) {
                     </a>
                 </div>
                 <div class="navbar__cart align-items-center flex-column">
-                    <a  href="<%=headerBasePath%>/cart/cartView.jsp" onclick="showLoginAlert()"> <i class="bi bi-cart-fill"></i>
+                    <a  href="<%=headerBasePath%>/cart/cart.jsp" onclick="showLoginAlert()"> <i class="bi bi-cart-fill"></i>
                     </a>
-                    <a href="<%=headerBasePath%>/cart/cartView.jsp" onclick="showLoginAlert()">Giỏ hàng</a>
+                    <a href="<%=headerBasePath%>/cart/cart.jsp" onclick="showLoginAlert()">Giỏ hàng</a>
                     <!-- Hiển thị số lượng sản phẩm trong giỏ hàng -->
                     <span class="cart-quantity-counter" id="count_shopping_cart_store"><%= cartQuantity %></span>
                 </div>
@@ -111,7 +111,7 @@ if (username == null) {
                 return; // Dừng việc submit form
             }
             // Chuyển hướng đến trang product_search.jsp với từ khóa tìm kiếm là tham số productName trên URL
-            var searchURL = "<%=headerBasePath%>/product_search.jsp?productName=" + encodeURIComponent(searchKeyword);
+            var searchURL = "<%=headerBasePath%>/product_searchView.jsp?productName=" + encodeURIComponent(searchKeyword);
             window.location.href = searchURL;
         });
         function showLoginAlert() {

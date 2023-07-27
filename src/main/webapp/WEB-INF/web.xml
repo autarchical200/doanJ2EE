@@ -92,14 +92,9 @@
 			<servlet-name>RemoveCart</servlet-name>
 			<url-pattern>/RemoveItemServlet</url-pattern>
 		</servlet-mapping>
-			<servlet>
-			<servlet-name>UpdateCart</servlet-name>
-			<servlet-class>pxu.edu.vn.cart.UpdateCartItemServlet</servlet-class>
-		</servlet>
-		<servlet-mapping>
-			<servlet-name>UpdateCart</servlet-name>
-			<url-pattern>/UpdateCartItemServlet</url-pattern>
-		</servlet-mapping>
+			
 	</web-app>
 </element>
+
+
 
